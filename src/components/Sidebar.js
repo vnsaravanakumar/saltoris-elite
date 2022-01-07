@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
 import Icon from '@material-tailwind/react/Icon';
 import H6 from '@material-tailwind/react/Heading6';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
     const [showSidebar, setShowSidebar] = useState('-left-64');
@@ -17,12 +18,14 @@ export default function Sidebar() {
             >
                 <div className="flex-col items-stretch min-h-full flex-nowrap px-0 relative">
                     <a
-                        href="https://material-tailwind.com?ref=mtd"
+                        
                         target="_blank"
                         rel="noreferrer"
                         className="mt-2 text-center w-full inline-block"
                     >
-                        <H6 color="gray">Material Tailwind</H6>
+                        <Link to="/">
+                            <H6 color="gray">Material Tailwind</H6>
+                        </Link>
                     </a>
                     <div className="flex flex-col">
                         <hr className="my-4 min-w-full" />
@@ -70,48 +73,28 @@ export default function Sidebar() {
                                 </NavLink>
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
-                                <a
-                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/login"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex items-center gap-4 text-sm font-light py-3"
-                                >
+                                <NavLink to="/login" className="flex items-center gap-4 text-sm font-light py-3">
                                     <Icon name="fingerprint" size="2xl" />
                                     Login
-                                </a>
+                                </NavLink>
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
-                                <a
-                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/register"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex items-center gap-4 text-sm font-light py-3"
-                                >
+                                <NavLink to="/register" className="flex items-center gap-4 text-sm font-light py-3">
                                     <Icon name="list_alt" size="2xl" />
                                     Register
-                                </a>
+                                </NavLink>
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
-                                <a
-                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/landing"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex items-center gap-4 text-sm font-light py-3"
-                                >
+                                <NavLink to="/" className="flex items-center gap-4 text-sm font-light py-3">
                                     <Icon name="web" size="2xl" />
                                     Landing Page
-                                </a>
+                                </NavLink>
                             </li>
                             <li className="px-4 rounded-lg mb-2 text-gray-700">
-                                <a
-                                    href="https://demos.creative-tim.com/material-tailwind-kit-react/#/profile"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex items-center gap-4 text-sm font-light py-3"
-                                >
+                                <NavLink to="/profile" className="flex items-center gap-4 text-sm font-light py-3">
                                     <Icon name="account_circle" size="2xl" />
                                     Profile Page
-                                </a>
+                                </NavLink>
                             </li>
                         </ul>
 

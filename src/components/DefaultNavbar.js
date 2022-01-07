@@ -20,13 +20,9 @@ export default function DefaultNavbar() {
         <Navbar color="transparent" navbar>
             <NavbarContainer>
                 <NavbarWrapper>
-                    <a
-                        href="https://material-tailwind.com?ref=mtk"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
+                    <Link to="/">
                         <NavbarBrand>Material Tailwind</NavbarBrand>
-                    </a>
+                    </Link>
                     <NavbarToggler
                         onClick={() => setOpenNavbar(!openNavbar)}
                         color="white"
@@ -36,16 +32,13 @@ export default function DefaultNavbar() {
                 <NavbarCollapse open={openNavbar}>
                     <Nav>
                         <div className="flex flex-col z-50 lg:flex-row lg:items-center">
-                            <NavLink
-                                href="https://material-tailwind.com/documentation/quick-start?ref=mtk"
-                                target="_blank"
-                                rel="noreferrer"
-                                ripple="light"
-                            >
-                                <Icon name="description" size="2xl" />
-                                &nbsp;Docs
-                            </NavLink>
-                            <NavLink
+                            <Link to="/dashboard">
+                                <NavLink ripple="light">
+                                    <Icon name="description" size="2xl" />
+                                    &nbsp;Dashboard
+                                </NavLink>
+                            </Link>
+                            {/* <NavLink
                                 href="https://material-tailwind.com/components?ref=mtk"
                                 target="_blank"
                                 rel="noreferrer"
@@ -53,7 +46,7 @@ export default function DefaultNavbar() {
                             >
                                 <Icon name="apps" size="2xl" />
                                 &nbsp;Components
-                            </NavLink>
+                            </NavLink> */}
                             <div className="text-white">
                                 <Dropdown
                                     color="transparent"
@@ -67,7 +60,7 @@ export default function DefaultNavbar() {
                                                 color="white"
                                             />
                                             <span className="ml-2">
-                                                Templates
+                                                Pages
                                             </span>
                                         </div>
                                     }
@@ -95,7 +88,7 @@ export default function DefaultNavbar() {
                                     </Link>
                                 </Dropdown>
                             </div>
-                            <NavLink
+                            {/* <NavLink
                                 href="https://github.com/creativetimofficial/material-tailwind?ref=mtk"
                                 target="_blank"
                                 rel="noreferrer"
@@ -128,7 +121,7 @@ export default function DefaultNavbar() {
                                 >
                                     Free Download
                                 </Button>
-                            </a>
+                            </a> */}
                         </div>
                     </Nav>
                 </NavbarCollapse>
