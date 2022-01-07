@@ -1,8 +1,8 @@
 {
-  "name": "material-tailwind-dashboard-react",
+  "name": "saltoris-elite",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/material-tailwind-dashboard-react/#/",
+  "homepage": "https://www.saltoris.com",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@material-tailwind/react": "^0.3.4",
