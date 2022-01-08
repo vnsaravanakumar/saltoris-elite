@@ -21,7 +21,7 @@ export default function DefaultNavbar() {
             <NavbarContainer>
                 <NavbarWrapper>
                     <Link to="/">
-                        <NavbarBrand>Material Tailwind</NavbarBrand>
+                        <NavbarBrand><img src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" /></NavbarBrand>
                     </Link>
                     <NavbarToggler
                         onClick={() => setOpenNavbar(!openNavbar)}
@@ -125,6 +125,16 @@ export default function DefaultNavbar() {
                         </div>
                     </Nav>
                 </NavbarCollapse>
+                <NavbarWrapper>
+                    <Link to="/">
+                        <NavbarBrand>
+                            <b className="text-5xl">ELIT</b>
+                            <div className="flex lowercase">powered by
+                            <img className="w-24" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
+                          </div>
+                        </NavbarBrand>
+                    </Link>
+                </NavbarWrapper>
             </NavbarContainer>
         </Navbar>
     );
