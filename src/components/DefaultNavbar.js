@@ -12,16 +12,25 @@ import Dropdown from '@material-tailwind/react/Dropdown';
 import DropdownItem from '@material-tailwind/react/DropdownItem';
 import Icon from '@material-tailwind/react/Icon';
 import Button from '@material-tailwind/react/Button';
+import VeoliaLogo from 'assets/img/veolia-logo-transparent.png';
+import Image from '@material-tailwind/react/Image';
 
 export default function DefaultNavbar() {
     const [openNavbar, setOpenNavbar] = useState(false);
 
-    return (
+    return (<>                            
         <Navbar color="transparent" navbar>
             <NavbarContainer>
                 <NavbarWrapper>
                     <Link to="/">
-                        <NavbarBrand><img src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" /></NavbarBrand>
+                        {/* <NavbarBrand><img src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" /></NavbarBrand> */}
+                        
+                            {/* <img src="veolia-logo-trim.png" /> */}
+                            <img
+                                src={VeoliaLogo}
+                                className="w-36 lg:w-48 h-auto "
+                            />
+                        
                     </Link>
                     <NavbarToggler
                         onClick={() => setOpenNavbar(!openNavbar)}
@@ -128,14 +137,14 @@ export default function DefaultNavbar() {
                 <NavbarWrapper>
                     <Link to="/">
                         <NavbarBrand>
-                            <b className="text-5xl">ELIT</b>
-                            <div className="flex lowercase">powered by
-                            <img className="w-24" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
+                            <b className="text-2xl">ELIT</b>
+                            <div className="flex lowercase text-xs">powered by
+                            <img className="w-20" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
                           </div>
                         </NavbarBrand>
                     </Link>
                 </NavbarWrapper>
             </NavbarContainer>
-        </Navbar>
+        </Navbar></>
     );
 }

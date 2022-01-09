@@ -4,6 +4,7 @@ import AdminNavbar from './AdminNavbar';
 import Icon from '@material-tailwind/react/Icon';
 import H6 from '@material-tailwind/react/Heading6';
 import { Link } from 'react-router-dom';
+import VeoliaLogo from 'assets/img/veolia-logo-transparent.png';
 
 export default function Sidebar() {
     const [showSidebar, setShowSidebar] = useState('-left-64');
@@ -24,7 +25,10 @@ export default function Sidebar() {
                         className="mt-2 text-center w-full inline-block"
                     >
                         <Link to="/">
-                            <H6 color="gray">Material Tailwind</H6>
+                            <img
+                                src={VeoliaLogo}
+                                className="w-36 h-auto "
+                            />
                         </Link>
                     </a>
                     <div className="flex flex-col">
