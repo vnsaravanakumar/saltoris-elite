@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.js', './public/index.html'],
+  content: ['./src/**/*.js', './src/components/**/*.js', './src/pages/**/*.js', './public/index.html'],
   theme: {
       fontFamily: {
           sans: ['Roboto', 'sans-serif'],
@@ -9,11 +9,11 @@ module.exports = {
       extend: {
           backgroundImage: () => ({
               'login-background':
-                  "linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0, 0.75)), url('/src/assets/img/background-1920x1280.jpg')",
+                  "linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0, 0.75)), url('/src/assets/img/road.jpg')",
               'landing-background':
-                  'linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0, 0.75)), url(https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80)',
+                  "linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0, 0.75)), url('/src/assets/img/port.jpg')",
               'profile-background':
-                  "linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0, 0.75)), url('/src/assets/img/background-1920x1080.jpg')",
+                  "linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0, 0.75)), url('/src/assets/img/port.jpg')",
           }),
       },
   },

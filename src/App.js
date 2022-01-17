@@ -8,7 +8,12 @@ import Footer from 'components/Footer';
 import Landing from 'pages/Landing';
 import Profile from 'pages/Profile';
 import Login from 'pages/Login';
+import SupplierLogin from 'pages/SupplierLogin';
+import BuyerLogin from 'pages/BuyerLogin';
 import Register from 'pages/Register';
+import SupplierRegister from 'pages/SupplierRegister';
+import SupplierPreRegister from 'pages/SupplierPreRegister';
+import BuyerRegister from 'pages/BuyerRegister';
 
 // Font Awesome Style Sheet
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -36,7 +41,12 @@ function App() {
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/login" component={Login} />
+                    <Route exact path="/supplier-login" component={SupplierLogin} />
+                    <Route exact path="/buyer-login" component={BuyerLogin} />
                     <Route exact path="/register" component={Register} />
+                    <Route exact path="/supplier-register" component={SupplierRegister} />
+                    <Route exact path="/supplier-preregister" component={SupplierPreRegister} />
+                    <Route exact path="/buyer-register" component={BuyerRegister} />
                     <Route exact path="/*" component={PostAuth} />
                     {/* <Redirect from="*" to="/postAuth" /> */}
                 </Switch>

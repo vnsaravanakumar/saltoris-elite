@@ -11,7 +11,7 @@ import SimpleFooter from 'components/SimpleFooter';
 import Page from 'components/login/Page';
 import Container from 'components/login/Container';
 
-export default function Login() {
+export default function BuyerLogin() {
     return (
         <Page>
             <DefaultNavbar />
@@ -19,7 +19,7 @@ export default function Login() {
                 <Card>
                     <CardHeader color="lightBlue">
                         <H5 color="white" style={{ marginBottom: 0 }}>
-                            Login
+                            Buyer Login
                         </H5>
                     </CardHeader>
 
@@ -30,7 +30,6 @@ export default function Login() {
                                 color="lightBlue"
                                 placeholder="Email Address"
                                 iconName="email"
-                                size="sm"
                             />
                         </div>
                         <div className="mb-8 px-4">
@@ -39,7 +38,6 @@ export default function Login() {
                                 color="lightBlue"
                                 placeholder="Password"
                                 iconName="lock"
-                                size="sm"
                             />
                         </div>
                         <div className="mb-4 px-4">
@@ -47,7 +45,6 @@ export default function Login() {
                                 color="lightBlue"
                                 text="Remember Me"
                                 id="remember"
-                                size="sm"
                             />
                         </div>
                     </CardBody>
@@ -56,7 +53,7 @@ export default function Login() {
                             <Button
                                 color="lightBlue"
                                 buttonType="link"
-                                size="sm"
+                                size="lg"
                                 ripple="dark"
                             >
                                 Get Started

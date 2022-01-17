@@ -4,14 +4,13 @@ import CardBody from '@material-tailwind/react/CardBody';
 import CardFooter from '@material-tailwind/react/CardFooter';
 import H5 from '@material-tailwind/react/Heading5';
 import InputIcon from '@material-tailwind/react/InputIcon';
-import Checkbox from '@material-tailwind/react/Checkbox';
 import Button from '@material-tailwind/react/Button';
 import DefaultNavbar from 'components/DefaultNavbar';
 import SimpleFooter from 'components/SimpleFooter';
 import Page from 'components/login/Page';
 import Container from 'components/login/Container';
 
-export default function Login() {
+export default function BuyerRegister() {
     return (
         <Page>
             <DefaultNavbar />
@@ -19,47 +18,45 @@ export default function Login() {
                 <Card>
                     <CardHeader color="lightBlue">
                         <H5 color="white" style={{ marginBottom: 0 }}>
-                            Login
+                            Buyer Register
                         </H5>
                     </CardHeader>
 
                     <CardBody>
-                        <div className="mb-12 px-4 bg-bb">
+                        <div className="mb-10 px-4">
+                            <InputIcon
+                                type="text"
+                                color="lightBlue"
+                                placeholder="Full Name"
+                                iconName="account_circle"
+                            />
+                        </div>
+                        <div className="mb-10 px-4">
                             <InputIcon
                                 type="email"
                                 color="lightBlue"
                                 placeholder="Email Address"
                                 iconName="email"
-                                size="sm"
                             />
                         </div>
-                        <div className="mb-8 px-4">
+                        <div className="mb-4 px-4">
                             <InputIcon
                                 type="password"
                                 color="lightBlue"
                                 placeholder="Password"
                                 iconName="lock"
-                                size="sm"
-                            />
-                        </div>
-                        <div className="mb-4 px-4">
-                            <Checkbox
-                                color="lightBlue"
-                                text="Remember Me"
-                                id="remember"
-                                size="sm"
                             />
                         </div>
                     </CardBody>
                     <CardFooter>
-                        <div className="flex justify-center bg-bb">
+                        <div className="flex justify-center">
                             <Button
                                 color="lightBlue"
                                 buttonType="link"
-                                size="sm"
+                                size="lg"
                                 ripple="dark"
                             >
-                                Get Started
+                                Register
                             </Button>
                         </div>
                     </CardFooter>

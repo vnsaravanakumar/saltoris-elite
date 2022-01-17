@@ -14,12 +14,14 @@ import Icon from '@material-tailwind/react/Icon';
 import Button from '@material-tailwind/react/Button';
 import VeoliaLogo from 'assets/img/veolia-logo-transparent.png';
 import Image from '@material-tailwind/react/Image';
+import AuthService from "../services/auth.service";
 
 export default function DefaultNavbar() {
     const [openNavbar, setOpenNavbar] = useState(false);
+    const currentUser = AuthService.getCurrentUser();
 
     return (<>                            
-        <Navbar color="transparent" navbar>
+        <Navbar color="transparent" navbar className="bg-black/40">
             <NavbarContainer>
                 <NavbarWrapper>
                     <Link to="/">
@@ -41,12 +43,33 @@ export default function DefaultNavbar() {
                 <NavbarCollapse open={openNavbar}>
                     <Nav>
                         <div className="flex flex-col z-50 lg:flex-row lg:items-center">
+                            {currentUser && 
                             <Link to="/dashboard">
                                 <NavLink ripple="light">
-                                    <Icon name="description" size="2xl" />
+                                    <Icon name="dashboard" size="2xl" />
                                     &nbsp;Dashboard
                                 </NavLink>
+                            </Link>}
+                            {!currentUser && (<>
+                            <Link to="/buyer-login">
+                                <NavLink ripple="light">
+                                    <Icon name="shopping_bag" size="2xl" />
+                                    &nbsp;Buyer
+                                </NavLink>
                             </Link>
+                            <Link to="/supplier-login">
+                                <NavLink ripple="light">
+                                    <Icon name="warehouse" size="2xl" />
+                                    &nbsp;Supplier
+                                </NavLink>
+                            </Link></>)}
+                            {currentUser && 
+                            <Link>
+                                <NavLink ripple="light" onClick={() => AuthService.logout()}>
+                                    <Icon name="logout" size="2xl" />
+                                    &nbsp;Logout
+                                </NavLink>
+                            </Link>}
                             {/* <NavLink
                                 href="https://material-tailwind.com/components?ref=mtk"
                                 target="_blank"
@@ -56,7 +79,7 @@ export default function DefaultNavbar() {
                                 <Icon name="apps" size="2xl" />
                                 &nbsp;Components
                             </NavLink> */}
-                            <div className="text-white">
+                            {/* <div className="text-white">
                                 <Dropdown
                                     color="transparent"
                                     size="sm"
@@ -96,7 +119,7 @@ export default function DefaultNavbar() {
                                         </DropdownItem>
                                     </Link>
                                 </Dropdown>
-                            </div>
+                            </div> */}
                             {/* <NavLink
                                 href="https://github.com/creativetimofficial/material-tailwind?ref=mtk"
                                 target="_blank"
@@ -137,9 +160,11 @@ export default function DefaultNavbar() {
                 <NavbarWrapper>
                     <Link to="/">
                         <NavbarBrand>
-                            <b className="text-2xl">ELIT</b>
+                            <div className="ml-4">
+                            <p className="text-2xl">ELIT</p>
                             <div className="flex lowercase text-xs">powered by
                             <img className="w-20" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
+                          </div>
                           </div>
                         </NavbarBrand>
                     </Link>
