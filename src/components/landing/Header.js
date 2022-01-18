@@ -34,7 +34,7 @@ export default function Header() {
                                     Buyer Registration
                                 </Button>
                             </Link> */}
-                            <Link to="/supplier-preregister">
+                            <Link to="/supplier-register">
                                 <Button
                                     color="orange"
                                     buttonType="filled"

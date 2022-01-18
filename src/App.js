@@ -44,8 +44,7 @@ function App() {
                     <Route exact path="/supplier-login" component={SupplierLogin} />
                     <Route exact path="/buyer-login" component={BuyerLogin} />
                     <Route exact path="/register" component={Register} />
-                    <Route exact path="/supplier-register" component={SupplierRegister} />
-                    <Route exact path="/supplier-preregister" component={SupplierPreRegister} />
+                    <Route exact path="/supplier-register" component={SupplierPreRegister} />
                     <Route exact path="/buyer-register" component={BuyerRegister} />
                     <Route exact path="/*" component={PostAuth} />
                     {/* <Redirect from="*" to="/postAuth" /> */}

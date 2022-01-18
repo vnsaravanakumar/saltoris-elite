@@ -13,47 +13,35 @@ import Page from 'components/login/Page';
 import Container from 'components/login/Container';
 import { Link, useHistory } from 'react-router-dom';
 import AuthService from "../services/auth.service";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { FormInput } from "../components/form/FormInput";
 
 export default function SupplierLogin() {
 
     const form = useRef();
-    const checkBtn = useRef();
     const history = useHistory();
 
-    //const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
     const { register, handleSubmit, formState: { errors }, control } = useForm();
-    const onSubmit = data => console.log(data);
 
-    // const onChangeEmail = (e) => {
-    //     const email = e.target.value;
-    //     setEmail(email);
-    // };
-
-    const onChangePassword = (e) => {
-        const password = e.target.value;
-        setPassword(password);
-    };
+    const errorMessages = {
+        email: {
+            pattern: "Please enter a valid email",
+            required: "Email is required"
+        },
+        password: {
+            pattern: "Password should contain atleast one letter, one number and one special character",
+            required: "Password is required",
+            minLength: "Password should be atleast 8 characters"
+        }
+    }
 
     const errorMessage = (field) => {
             const type = errors?.[field]?.type;
-
-            switch(field){
-                case "email":
-                    if(type == "pattern") return "Please enter a valid email"
-                    if(type == "required") return "Email is required"
-                    break;
-                case "password":
-                    if(type == "minLength") return "Password should be atleast 8 characters"
-                    if(type == "required") return "Password is required"
-                    if(type == "pattern") return "Password should contain atleast one letter, one number and one special character"
-                    break;
-            }
+            return errorMessages[field][type];
     }
     const handleLogin = (data, e) => {
         e.preventDefault();
@@ -136,16 +124,14 @@ export default function SupplierLogin() {
                             </CardBody>
                             <CardFooter>
                                 <div className="flex justify-center bg-bb">
-                                    {/* <Link to="/dashboard"> */}
-                                        <Button
-                                            color="lightBlue"
-                                            buttonType="submit"
-                                            size="md"
-                                            ripple="dark"
-                                        >
-                                            Get Started
-                                        </Button>
-                                    {/* </Link> */}
+                                    <Button
+                                        color="lightBlue"
+                                        buttonType="submit"
+                                        size="md"
+                                        ripple="dark"
+                                    >
+                                        Get Started
+                                    </Button>
                                 </div>
                             </CardFooter>
                         </Card>
