@@ -16,6 +16,7 @@ import AuthService from "../services/auth.service";
 import { useForm } from "react-hook-form";
 import { FormInput } from "../components/form/FormInput";
 import SupplierRegister from "./SupplierRegister";
+import ClosingAlert from "@material-tailwind/react/ClosingAlert";
 
 export default function SupplierPreRegister() {
     const form = useRef();
@@ -92,6 +93,7 @@ export default function SupplierPreRegister() {
                             <h2 className="text-xl">Supplier Registration</h2>
                         </div>
                     </div>
+                    {/* <ClosingAlert color="red" className="text-sm">Company doesn't exists</ClosingAlert> */}
                     <CardBody>
                         <h6 className="text-lightBlue-500 text-sm mt-3 mb-6 font-light uppercase">
                             Company Information

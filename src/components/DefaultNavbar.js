@@ -23,11 +23,8 @@ export default function DefaultNavbar() {
     return (<>                            
         <Navbar color="transparent" navbar className="bg-black/40">
             <NavbarContainer>
-                <NavbarWrapper>
+                {/* <NavbarWrapper>
                     <Link to="/">
-                        {/* <NavbarBrand><img src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" /></NavbarBrand> */}
-                        
-                            {/* <img src="veolia-logo-trim.png" /> */}
                             <img
                                 src={VeoliaLogo}
                                 className="w-36 lg:w-48 h-auto "
@@ -38,8 +35,23 @@ export default function DefaultNavbar() {
                         onClick={() => setOpenNavbar(!openNavbar)}
                         color="white"
                     />
+                </NavbarWrapper> */}
+                <NavbarWrapper>
+                    <Link to="/">
+                        <NavbarBrand>
+                            <div className="ml-4">
+                                <p className="text-2xl">ELIT</p>
+                                <div className="flex lowercase text-xs">powered by
+                                    <img className="w-20" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
+                                </div>
+                            </div>
+                        </NavbarBrand>
+                    </Link>
+                    <NavbarToggler
+                        onClick={() => setOpenNavbar(!openNavbar)}
+                        color="white"
+                    />
                 </NavbarWrapper>
-
                 <NavbarCollapse open={openNavbar}>
                     <Nav>
                         <div className="flex flex-col z-50 lg:flex-row lg:items-center">
@@ -157,18 +169,7 @@ export default function DefaultNavbar() {
                         </div>
                     </Nav>
                 </NavbarCollapse>
-                <NavbarWrapper>
-                    <Link to="/">
-                        <NavbarBrand>
-                            <div className="ml-4">
-                            <p className="text-2xl">ELIT</p>
-                            <div className="flex lowercase text-xs">powered by
-                            <img className="w-20" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
-                          </div>
-                          </div>
-                        </NavbarBrand>
-                    </Link>
-                </NavbarWrapper>
+
             </NavbarContainer>
         </Navbar></>
     );
