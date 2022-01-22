@@ -10,10 +10,11 @@ import DefaultNavbar from 'components/DefaultNavbar';
 import SimpleFooter from 'components/SimpleFooter';
 import Page from 'components/register/Page';
 import Container from 'components/register/Container';
-import { FormInput } from "../components/form/FormInput";
+import { FormInput } from "components/form/FormInput";
 import { useForm } from "react-hook-form";
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from 'react-router-dom';
+import { SimpleModal } from 'components/SimpleModal';
 
 export default function SupplierRegister({data: { companyName, email, registrationNumber}}) {
 
@@ -60,6 +61,9 @@ export default function SupplierRegister({data: { companyName, email, registrati
 
     }
 
+    const [showModal, setShowModal] = React.useState(false);
+    const closeHandler = () => history.push("/supplier-login");
+
     const { errors } = formState; 
 
     const errorMessage = (field) => {
@@ -76,8 +80,9 @@ export default function SupplierRegister({data: { companyName, email, registrati
         //alert("handler")
         // setMessage("");
         // setLoading(true);
-    
-        history.push("/login");
+        setShowModal(true)
+        
+        
 
         //form.current.validateAll();
     
@@ -104,12 +109,13 @@ export default function SupplierRegister({data: { companyName, email, registrati
         // }
     };
 
-    useEffect(async () => {
+    useEffect(() => {
         //const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
         reset({companyName, registrationNumber, email }); // asynchronously reset your form values
       }, [reset])
 
-    return (            
+    return (   
+        <>         
         <Card>
             <CardHeader color="lightBlue" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
@@ -262,5 +268,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
             </CardFooter>
             </form>
         </Card>
+        <SimpleModal showModal={showModal} setShowModal={setShowModal} closeHandler={closeHandler} message="You have been registered, please check your email for credentials to login." />
+        </>
     );
 }

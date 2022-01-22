@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { FormInput } from "../components/form/FormInput";
 import SupplierRegister from "./SupplierRegister";
 import ClosingAlert from "@material-tailwind/react/ClosingAlert";
+import { SimpleModal } from 'components/SimpleModal';
 
 export default function SupplierPreRegister() {
     const form = useRef();
@@ -30,6 +31,9 @@ export default function SupplierPreRegister() {
     const [preRegister, setPreRegister] = useState(true);
     const [preRegisterValues, setPreRegisterValues] = useState();
     
+    const [showModal, setShowModal] = React.useState(false);
+    const closeHandler = () => setShowModal(false);
+
     const errorMessages = {
         email: {
             pattern: "Please enter a valid email",
@@ -58,12 +62,17 @@ export default function SupplierPreRegister() {
         //form.current.validateAll();
     
         //if (checkBtn.current.context._errors.length === 0) {
-          const prom = AuthService.customerPreCheck(email, password)
+          const prom = AuthService.customerPreCheck(data.companyName, data.email)
           prom.then(
-            () => {
+            (responseData) => {
               //history.push("/supplier-register");
-              setPreRegisterValues({...data, registrationNumber: Math.round(Math.random() * 10000000000)});
-              setPreRegister(false);
+              if(responseData.status === "SUCCESS"){
+                setPreRegisterValues({...responseData.data, registrationNumber: Math.round(Math.random() * 10000000000)});
+                setPreRegister(false);
+              }else if(responseData.status === "ERROR"){
+                setShowModal(true);
+              }
+
             },
             (error) => {
               const resMessage =
@@ -82,6 +91,7 @@ export default function SupplierPreRegister() {
         // }
     };
     return (
+        <>
         <Page>
             <DefaultNavbar />
             <Container>             
@@ -137,5 +147,7 @@ export default function SupplierPreRegister() {
                 <SupplierRegister data={preRegisterValues} />}
             </Container>
         </Page>
+        <SimpleModal type="ERROR" showModal={showModal} setShowModal={setShowModal} closeHandler={closeHandler} message="Please contact your admin." />
+        </>
     );
 }

@@ -10,8 +10,13 @@ const register = (username, email, password) => {
   });
 };
 
-const customerPreCheck = async (username, password) => {
-    const responseData = {firstName: "Saravanakumar", lastName: "Velusamy"};
+const customerPreCheck = async (companyName, email) => {
+    let responseData = {status: "SUCCESS", data: {companyName, email}};
+
+    if(email === "vnsaravanakumar@gmail.com"){
+      responseData = {status: "ERROR", message: "registered"};
+    }
+
     return responseData;
 }
 
