@@ -137,7 +137,7 @@ export default function SupplierLogin() {
                         </Card>
                     </form>
                 </Container>
-            <SimpleFooter />
+            {/* <SimpleFooter /> */}
         </Page>
     );
 }

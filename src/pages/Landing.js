@@ -17,7 +17,7 @@ export default function Landing() {
                 <TeamSection />
                 <ContactSection />
             </main>
-            <DefaultFooter />
+            {/* <DefaultFooter /> */}
         </>
     );
 }

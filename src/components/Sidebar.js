@@ -101,7 +101,7 @@ export default function Sidebar() {
                                 </NavLink>
                             </li>
                         </ul>
-
+{/* 
                         <ul className="flex-col min-w-full flex list-none absolute bottom-0">
                             <li className="bg-gradient-to-tr from-light-blue-500 to-light-blue-700 px-4 rounded-lg text-white mb-2">
                                 <a
@@ -124,7 +124,7 @@ export default function Sidebar() {
                                     Free Download
                                 </a>
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>

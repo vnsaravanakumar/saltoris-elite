@@ -62,7 +62,7 @@ export default function BuyerLogin() {
                     </CardFooter>
                 </Card>
             </Container>
-            <SimpleFooter />
+            {/* <SimpleFooter /> */}
         </Page>
     );
 }

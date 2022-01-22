@@ -49,7 +49,7 @@ function App() {
                     <Route exact path="/*" component={PostAuth} />
                     {/* <Redirect from="*" to="/postAuth" /> */}
                 </Switch>
-                <Footer />
+                {/* <Footer /> */}
 
         </>
     );
