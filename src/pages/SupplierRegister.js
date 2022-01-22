@@ -241,6 +241,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
                                 label="Password"
                                 validation={errorMessage("password")}
                                 rules={{ required: true }}
+                                type="password"
                             />
                         </div>
                         <div className="w-full lg:w-6/12 lg:pl-4 mb-10 font-light">
@@ -250,6 +251,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
                                 label="Confirm Password"
                                 validation={errorMessage("confirmPassword")}
                                 rules={{ required: true }}
+                                type="password"
                             />
                         </div>
                     </div>
