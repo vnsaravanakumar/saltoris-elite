@@ -4,22 +4,30 @@ import CardBody from '@material-tailwind/react/CardBody';
 import CardFooter from '@material-tailwind/react/CardFooter';
 import H5 from '@material-tailwind/react/Heading5';
 import InputIcon from '@material-tailwind/react/InputIcon';
-import Input from '@material-tailwind/react/Input';
+import { FormInput } from "components/form/FormInput";
+import { FormCheckbox } from 'components/form/FormCheckbox';
 import Button from '@material-tailwind/react/Button';
 import DefaultNavbar from 'components/DefaultNavbar';
 import SimpleFooter from 'components/SimpleFooter';
 import Page from 'components/register/Page';
 import Container from 'components/register/Container';
-import { FormInput } from "components/form/FormInput";
 import { useForm } from "react-hook-form";
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from 'react-router-dom';
 import { SimpleModal } from 'components/SimpleModal';
+import { TermsAndConditions } from 'components/TermsAndConditions'
+import { Link } from 'react-router-dom';
+import Checkbox from '@material-tailwind/react/Checkbox';
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function SupplierRegister({data: { companyName, email, registrationNumber}}) {
 
-    const { register, handleSubmit, formState, control, getValues, reset } = useForm();
+    const { handleSubmit, trigger, formState, control, watch, getValues, setValue, reset } = useForm({defaultValues: {
+        useEmail: true,
+        email: email
+      }});
     const form = useRef();
+    
 
     const errorMessages = {
         companyName: {
@@ -28,8 +36,8 @@ export default function SupplierRegister({data: { companyName, email, registrati
         registrationNumber: {
             required: "Registration number is required"
         },
-        address: {
-            required: "Address is required"
+        address1: {
+            required: "Address Line 1 is required"
         },
         country: {
             required: "Country is required"
@@ -62,6 +70,8 @@ export default function SupplierRegister({data: { companyName, email, registrati
     }
 
     const [showModal, setShowModal] = React.useState(false);
+    const [showTermsAndConditions, setShowTermsAndConditions] = React.useState(false);
+    
     const closeHandler = () => history.push("/supplier-login");
 
     const { errors } = formState; 
@@ -73,7 +83,26 @@ export default function SupplierRegister({data: { companyName, email, registrati
     
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
+    const [captchaVerified, setCaptchaVerified] = useState(false);
     const history = useHistory();
+    const watchUseEmail = watch("useEmail", true);
+
+    // watch((data, { name, type }) => {
+    //     if(name === "useEmail"){
+
+    //     }
+    //     console.log(data, name, type)
+    // })
+
+    useEffect(() => {
+        //const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
+        reset({companyName, registrationNumber, email, useEmail: true }); // asynchronously reset your form values
+      }, [reset])
+
+    const onChange = (value) => {
+        console.log("Captcha value:", value);
+        setCaptchaVerified(true);
+    }
 
     const handleRegister = (data, e) => {
         e.preventDefault();
@@ -109,15 +138,15 @@ export default function SupplierRegister({data: { companyName, email, registrati
         // }
     };
 
-    useEffect(() => {
-        //const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
-        reset({companyName, registrationNumber, email }); // asynchronously reset your form values
-      }, [reset])
+
+    //   useEffect(() => {
+    //     trigger("useEmail", true);
+    //   }, []);
 
     return (   
         <>         
         <Card>
-            <CardHeader color="lightBlue" contentPosition="none">
+            <CardHeader color="" className="bg-primary" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
                     <h2 className="text-white text-xl">Supplier Registration</h2>
                 </div>
@@ -142,9 +171,9 @@ export default function SupplierRegister({data: { companyName, email, registrati
                             <FormInput 
                                 control={control}
                                 name="registrationNumber"
-                                label="Registration Number"
+                                label="Corporate Identification Number (CIN)"
                                 validation={errorMessage("registrationNumber")}
-                                rules={{ required: true }}
+                                //rules={{ required: true }}
                                 defaultValue={registrationNumber}
                                 disabled
                             />
@@ -152,10 +181,17 @@ export default function SupplierRegister({data: { companyName, email, registrati
                         <div className="w-full lg:w-12/12 mb-10 font-light">
                             <FormInput 
                                 control={control}
-                                name="address"
-                                label="Address"
-                                validation={errorMessage("address")}
+                                name="address1"
+                                label="Address Line 1"
+                                validation={errorMessage("address1")}
                                 rules={{ required: true }}
+                            />
+                        </div>
+                        <div className="w-full lg:w-12/12 mb-10 font-light">
+                            <FormInput 
+                                control={control}
+                                name="address2"
+                                label="Address Line 2"
                             />
                         </div>
                         <div className="w-full lg:w-4/12 lg:pr-4 mb-10 font-light">
@@ -215,7 +251,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
                                 rules={{ required: true }}
                             />
                         </div>
-                        <div className="w-full lg:w-6/12 lg:pr-4 mb-10 font-light">
+                        <div className="w-full lg:w-6/12 lg:pr-4 mb-2 font-light">
                             <FormInput 
                                 control={control}
                                 name="businessRole"
@@ -224,15 +260,26 @@ export default function SupplierRegister({data: { companyName, email, registrati
                                 rules={{ required: true }}
                             />
                         </div>
-                        <div className="w-full lg:w-6/12 lg:pl-4 mb-10 font-light">
+                        <div className="w-full lg:w-6/12 lg:pl-4 mb-2 font-light">
                             <FormInput 
                                 control={control}
                                 name="email"
                                 label="Username (Email Address)"
                                 validation={errorMessage("email")}
                                 rules={{ required: true }}
+                                value={watchUseEmail ? email : ''}
                                 defaultValue={email}
                             />
+                        </div>
+                        <div className="w-full lg:w-12/12 mb-5 font-light flex justify-end">
+                        <div className="w-full lg:w-6/12 lg:pl-4 font-light">
+                            <FormCheckbox 
+                                control={control}
+                                name="useEmail"
+                                rules={{ required: false }}
+                                text="Use my email as username"
+                            />
+                            </div>
                         </div>
                         <div className="w-full lg:w-6/12 lg:pr-4 mb-10 font-light">
                             <FormInput 
@@ -257,20 +304,39 @@ export default function SupplierRegister({data: { companyName, email, registrati
                     </div>
             </CardBody>
             <CardFooter>
+                <div className="flex justify-center mb-4">
+                    <ReCAPTCHA
+                        sitekey="6LfA3UYeAAAAANF0S7U6iNL0sI6yi_BCRuXFkB3h"
+                        onChange={onChange}
+                    />
+                </div>
                 <div className="flex justify-center">
                     <Button
-                        color="lightBlue"
+                        color=""
+                        className="bg-primary disabled:opacity-50"
                         buttonType="submit"
                         size="md"
                         ripple="dark"
+                        disabled={!captchaVerified}
                     >
                         Register
                     </Button>
+                </div>
+                <div className="flex justify-center mt-4">
+                    <FormCheckbox 
+                        control={control}
+                        name="acceptTerms"
+                        rules={{ required: true }}
+                        text=""
+                    />
+                    <span className="text-sm">I have read and agree with the <span  className="text-primary cursor-pointer">Terms of Use</span>.</span>
+                     
                 </div>
             </CardFooter>
             </form>
         </Card>
         <SimpleModal showModal={showModal} setShowModal={setShowModal} closeHandler={closeHandler} message="You have been registered, please check your email for credentials to login." />
+        <TermsAndConditions showModal={showTermsAndConditions} setShowModal={setShowTermsAndConditions} closeHandler={closeHandler} />
         </>
     );
 }

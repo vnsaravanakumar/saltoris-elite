@@ -98,7 +98,7 @@ export default function SupplierPreRegister() {
                 {preRegister ? 
                 <Card>
                     <form onSubmit={handleSubmit(handleRegister)} ref={form}>
-                    <div color="lightBlue" contentPosition="none" className="bg-sky-500 p-5 text-white rounded-lg">
+                    <div contentPosition="none" className="bg-primary p-5 text-white rounded-lg">
                         <div className="w-full flex items-center justify-between">
                             <h2 className="text-xl">Supplier Registration</h2>
                         </div>
@@ -133,7 +133,8 @@ export default function SupplierPreRegister() {
                     <CardFooter className="-pt-4">
                         <div className="flex justify-center">
                             <Button
-                                color="lightBlue"
+                                color=""
+                                className="bg-primary"
                                 buttonType="submit"
                                 size="md"
                                 ripple="dark"

@@ -76,18 +76,28 @@ export default function SupplierLogin() {
       
     return (
         <Page>
-            <DefaultNavbar />
-                <Container>
+            {/* <DefaultNavbar /> */}
+            <div className="flex justify-end mr-10 mt-6 text-gray-700">
+                <Link to="/">
+                    <div className="ml-4">
+                        <p className="text-2xl font-bold">ELIT</p>
+                        <div className="flex lowercase text-xs">powered by
+                            <img className="w-20 ml-2" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
+                        </div>
+                    </div>
+                </Link>
+                </div>
+                <div className="flex justify-end w-full pr-32 h-full items-center mb-20">
                     <form onSubmit={handleSubmit(handleLogin)} ref={form}>
-                        <Card>
+                        <div className="w-96">
                             {/* <CardHeader color="lightBlue">
                                 <H5 color="white text-xl" style={{ marginBottom: 0 }}>
                                     Supplier Login
                                 </H5>
                             </CardHeader> */}
-                            <div color="lightBlue" contentPosition="none" className=" bg-sky-500 p-5 mb-5 text-white rounded-lg">
+                            <div contentPosition="none" className=" p-5 mb-5 text-white rounded-lg">
                                 <div className="w-full flex items-center justify-between">
-                                    <h2 className="text-xl">Supplier Login</h2>
+                                    <h2 className="text-3xl font-bold text-gray-800">Supplier Login</h2>
                                 </div>
                             </div>
                             <CardBody>
@@ -125,18 +135,23 @@ export default function SupplierLogin() {
                             <CardFooter>
                                 <div className="flex justify-center bg-bb">
                                     <Button
-                                        color="lightBlue"
+                                        color=""
+                                        className="bg-primary"
                                         buttonType="submit"
                                         size="md"
                                         ripple="dark"
+                                        block={true}
+                                        iconOnly={false}
                                     >
-                                        Get Started
+                                        Login
                                     </Button>
                                 </div>
+                                <p className="text-xs text-center mt-5 text-gray">New to Elit Collaboration Platform?</p>
+                                <p className="text-xs text-center mt-2 underline font-semibold text-gray"><Link to="/supplier-register">Register Now</Link></p>
                             </CardFooter>
-                        </Card>
+                        </div>
                     </form>
-                </Container>
+                </div>
             {/* <SimpleFooter /> */}
         </Page>
     );
