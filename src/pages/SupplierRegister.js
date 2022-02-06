@@ -84,6 +84,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [captchaVerified, setCaptchaVerified] = useState(false);
+    const [acceptTerms, setAcceptTerms] = useState(false);
     const history = useHistory();
     const watchUseEmail = watch("useEmail", true);
 
@@ -99,9 +100,22 @@ export default function SupplierRegister({data: { companyName, email, registrati
         reset({companyName, registrationNumber, email, useEmail: true }); // asynchronously reset your form values
       }, [reset])
 
-    const onChange = (value) => {
+    const onCaptchaChange = (value) => {
         console.log("Captcha value:", value);
-        setCaptchaVerified(true);
+        if(value !== null){
+            setCaptchaVerified(true);
+        }else{
+            setCaptchaVerified(false);
+        }
+    }
+
+    const onAcceptTermsChange = (value) => {
+        console.log("Captcha value:", value);
+        if(value !== null){
+            setAcceptTerms(true);
+        }else{
+            setAcceptTerms(false);
+        }
     }
 
     const handleRegister = (data, e) => {
@@ -146,12 +160,17 @@ export default function SupplierRegister({data: { companyName, email, registrati
     return (   
         <>         
         <Card>
-            <CardHeader color="" className="bg-primary" contentPosition="none">
+            {/* <CardHeader color="" className="bg-primary" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
                     <h2 className="text-white text-xl">Supplier Registration</h2>
                 </div>
-            </CardHeader>
+            </CardHeader> */}
             <form onSubmit={handleSubmit(handleRegister)} ref={form}>
+            <div contentPosition="none" className="bg-primary p-5 text-white rounded-lg">
+                <div className="w-full flex items-center justify-between">
+                    <h2 className="text-xl">Supplier Registration</h2>
+                </div>
+            </div>
             <CardBody>
                     <h6 className="text-lightBlue-500 text-sm mt-3 mb-6 font-light uppercase">
                         Company Information
@@ -307,30 +326,30 @@ export default function SupplierRegister({data: { companyName, email, registrati
                 <div className="flex justify-center mb-4">
                     <ReCAPTCHA
                         sitekey="6LfA3UYeAAAAANF0S7U6iNL0sI6yi_BCRuXFkB3h"
-                        onChange={onChange}
+                        onChange={onCaptchaChange}
                     />
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center pb-6">
+                    <FormCheckbox 
+                        control={control}
+                        name="acceptTerms"
+                        rules={{ required: true }}
+                        text=""
+                        onChange={onAcceptTermsChange}
+                    />
+                    <span className="text-sm">I have read and agree with the <span  className="text-primary cursor-pointer">Terms of Use</span>.</span>
+                </div>
+                <div className="flex justify-center mb-8">
                     <Button
                         color=""
                         className="bg-primary disabled:opacity-50"
                         buttonType="submit"
                         size="md"
                         ripple="dark"
-                        disabled={!captchaVerified}
+                        disabled={!captchaVerified || !acceptTerms}
                     >
                         Register
                     </Button>
-                </div>
-                <div className="flex justify-center mt-4">
-                    <FormCheckbox 
-                        control={control}
-                        name="acceptTerms"
-                        rules={{ required: true }}
-                        text=""
-                    />
-                    <span className="text-sm">I have read and agree with the <span  className="text-primary cursor-pointer">Terms of Use</span>.</span>
-                     
                 </div>
             </CardFooter>
             </form>

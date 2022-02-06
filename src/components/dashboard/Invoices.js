@@ -3,11 +3,12 @@ import Chart from 'chart.js';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
+import InvoicesTable from './InvoicesTable';
 
-export default function ChartBar() {
+export default function Invoices() {
     useEffect(() => {
-        let config = {
-            type: 'bar',
+        var config = {
+            type: 'line',
             data: {
                 labels: [
                     'January',
@@ -23,17 +24,15 @@ export default function ChartBar() {
                         label: new Date().getFullYear(),
                         backgroundColor: '#03a9f4',
                         borderColor: '#03a9f4',
-                        data: [30, 78, 56, 34, 100, 45, 13],
+                        data: [65, 78, 66, 44, 56, 67, 75],
                         fill: false,
-                        barThickness: 8,
                     },
                     {
                         label: new Date().getFullYear() - 1,
                         fill: false,
-                        backgroundColor: '#f44336',
-                        borderColor: '#f44336',
-                        data: [27, 68, 86, 74, 10, 4, 87],
-                        barThickness: 8,
+                        backgroundColor: '#ff9800',
+                        borderColor: '#ff9800',
+                        data: [40, 68, 86, 74, 56, 60, 87],
                     },
                 ],
             },
@@ -42,7 +41,15 @@ export default function ChartBar() {
                 responsive: true,
                 title: {
                     display: false,
-                    text: 'Orders Chart',
+                    text: 'Sales Charts',
+                    fontColor: 'white',
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'black',
+                    },
+                    align: 'end',
+                    position: 'bottom',
                 },
                 tooltips: {
                     mode: 'index',
@@ -52,26 +59,24 @@ export default function ChartBar() {
                     mode: 'nearest',
                     intersect: true,
                 },
-                legend: {
-                    labels: {
-                        fontColor: 'rgba(17,17,17,.7)',
-                    },
-                    align: 'end',
-                    position: 'bottom',
-                },
                 scales: {
                     xAxes: [
                         {
-                            display: false,
+                            ticks: {
+                                fontColor: 'rgba(17,17,17,.7)',
+                            },
+                            display: true,
                             scaleLabel: {
-                                display: true,
+                                display: false,
                                 labelString: 'Month',
+                                fontColor: 'white',
                             },
                             gridLines: {
+                                display: false,
                                 borderDash: [2],
                                 borderDashOffset: [2],
                                 color: 'rgba(33, 37, 41, 0.3)',
-                                zeroLineColor: 'rgba(33, 37, 41, 0.3)',
+                                zeroLineColor: 'rgba(0, 0, 0, 0)',
                                 zeroLineBorderDash: [2],
                                 zeroLineBorderDashOffset: [2],
                             },
@@ -79,17 +84,21 @@ export default function ChartBar() {
                     ],
                     yAxes: [
                         {
+                            ticks: {
+                                fontColor: 'rgba(17,17,17,.7)',
+                            },
                             display: true,
                             scaleLabel: {
                                 display: false,
                                 labelString: 'Value',
+                                fontColor: 'white',
                             },
                             gridLines: {
-                                borderDash: [2],
+                                borderDash: [3],
+                                borderDashOffset: [3],
                                 drawBorder: false,
-                                borderDashOffset: [2],
-                                color: 'rgba(33, 37, 41, 0.2)',
-                                zeroLineColor: 'rgba(33, 37, 41, 0.15)',
+                                color: 'rgba(17, 17, 17, 0.15)',
+                                zeroLineColor: 'rgba(33, 37, 41, 0)',
                                 zeroLineBorderDash: [2],
                                 zeroLineBorderDashOffset: [2],
                             },
@@ -98,23 +107,25 @@ export default function ChartBar() {
                 },
             },
         };
-        let ctx = document.getElementById('bar-chart').getContext('2d');
-        window.myBar = new Chart(ctx, config);
+        var ctx = document.getElementById('line-chart').getContext('2d');
+        window.myLine = new Chart(ctx, config);
     }, []);
+
     return (
         <Card className="rounded-md">
-            {/* <CardHeader color="pink" contentPosition="left"> */}
+            {/* <CardHeader color="orange" contentPosition="left"> */}
             <div className="mb-5">
-                <h2 className="text-gray-700 text-xl mb-3">Service requests</h2>
+                <h2 className="text-gray-700 text-xl mb-3">Invoices</h2>
                 <h6 className="text-gray-700 text-xs font-medium mb-5">
                     Current data as of yesterday at 3:18pm
                 </h6>
             </div>
-            {/* </CardHeader> */}
+           {/*} </CardHeader> */}
             <CardBody>
-                <div className="relative h-96">
-                    <canvas id="bar-chart"></canvas>
+                <div className="relative h-72">
+                    <canvas id="line-chart"></canvas>
                 </div>
+                <InvoicesTable />
             </CardBody>
         </Card>
     );

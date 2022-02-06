@@ -3,8 +3,9 @@ import Chart from 'chart.js';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
+import OrdersTable from './OrdersTable';
 
-export default function ChartBar() {
+export default function ServiceRequests() {
     useEffect(() => {
         let config = {
             type: 'bar',
@@ -105,16 +106,17 @@ export default function ChartBar() {
         <Card className="rounded-md">
             {/* <CardHeader color="pink" contentPosition="left"> */}
             <div className="mb-5">
-                <h2 className="text-gray-700 text-xl mb-3">Service requests</h2>
+                <h2 className="text-gray-700 text-xl mb-3">Orders</h2>
                 <h6 className="text-gray-700 text-xs font-medium mb-5">
                     Current data as of yesterday at 3:18pm
                 </h6>
             </div>
             {/* </CardHeader> */}
             <CardBody>
-                <div className="relative h-96">
+                <div className="relative h-72">
                     <canvas id="bar-chart"></canvas>
                 </div>
+                <OrdersTable />
             </CardBody>
         </Card>
     );

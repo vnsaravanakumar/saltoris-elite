@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';
 import NavbarInput from '@material-tailwind/react/NavbarInput';
@@ -6,12 +6,17 @@ import Image from '@material-tailwind/react/Image';
 import Dropdown from '@material-tailwind/react/Dropdown';
 import DropdownItem from '@material-tailwind/react/DropdownItem';
 import ProfilePicture from 'assets/img/team-1-800x800.jpg';
+import AuthService from "../services/auth.service";
+import { Link } from 'react-router-dom';
+import NavLink from '@material-tailwind/react/NavLink';
 
 export default function AdminNavbar({ showSidebar, setShowSidebar }) {
     const location = useLocation().pathname;
+    const currentUser = AuthService.getCurrentUser();
+    const history = useHistory();
 
     return (
-        <nav className="bg-light-blue-500 md:ml-64 py-6 px-3">
+        <nav className="md:ml-64 py-6 px-3">
             <div className="container max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10">
                 <div className="md:hidden">
                     <Button
@@ -45,14 +50,14 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
                 </div>
 
                 <div className="flex justify-between items-center w-full">
-                    <h4 className="uppercase text-white text-sm tracking-wider mt-1">
+                    <h4 className="uppercase text-sm tracking-wider mt-1">
                         {location === '/'
                             ? 'DASHBOARD'
                             : location.toUpperCase().replace('/', '')}
                     </h4>
 
                     <div className="flex">
-                        <NavbarInput placeholder="Search" />
+                        <NavbarInput placeholder="Search" className="text-black" />
 
                         <div className="-mr-4 ml-6">
                             <Dropdown
@@ -79,6 +84,34 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
                                 </DropdownItem>
                             </Dropdown>
                         </div>
+                        {currentUser && 
+                        <Link href="/">
+                            <NavLink ripple="dark" className="cursor-pointer" onClick={() => {AuthService.logout(); history.push("/");}} >
+                                <div className="text-black items-center flex gap-1">
+                                    <Icon name="logout" size="2xl" />
+                                    &nbsp;Logout
+                                </div>
+                            </NavLink>
+                        </Link>
+                            }
+                            {/*<Link>
+                                 <Button
+                                    color="transparent"
+                                    buttonType="link"
+                                    size="lg"
+                                    style={{ padding: 0 }}
+                                >
+                                    <Icon name="logout" size="2xl" />
+                                    &nbsp;Logout
+                                </Button> 
+                                <NavLink ripple="dark" onClick={() => AuthService.logout()} >
+                                    <div className="text-black items-center flex gap-1">
+                                        <Icon name="logout" size="2xl" />
+                                        &nbsp;Logout
+                                    </div>
+                                </NavLink>
+                             </Link> */
+                            }
                     </div>
                 </div>
             </div>

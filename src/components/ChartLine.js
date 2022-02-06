@@ -111,13 +111,15 @@ export default function ChartLine() {
     }, []);
 
     return (
-        <Card>
-            <CardHeader color="orange" contentPosition="left">
-                <h6 className="uppercase text-gray-200 text-xs font-medium">
-                    Overview
+        <Card className="rounded-md">
+            {/* <CardHeader color="orange" contentPosition="left"> */}
+            <div className="mb-5">
+                <h2 className="text-gray-700 text-xl mb-3">Customers</h2>
+                <h6 className="text-gray-700 text-xs font-medium mb-5">
+                    Current data as of yesterday at 3:18pm
                 </h6>
-                <h2 className="text-white text-2xl">Sales value</h2>
-            </CardHeader>
+            </div>
+           {/*} </CardHeader> */}
             <CardBody>
                 <div className="relative h-96">
                     <canvas id="line-chart"></canvas>
