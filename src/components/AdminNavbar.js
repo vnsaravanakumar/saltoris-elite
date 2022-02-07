@@ -10,13 +10,13 @@ import AuthService from "../services/auth.service";
 import { Link } from 'react-router-dom';
 import NavLink from '@material-tailwind/react/NavLink';
 
-export default function AdminNavbar({ showSidebar, setShowSidebar }) {
+export default function AdminNavbar({ showSidebar, setShowSidebar, hideText }) {
     const location = useLocation().pathname;
     const currentUser = AuthService.getCurrentUser();
     const history = useHistory();
 
     return (
-        <nav className="md:ml-64 py-6 px-3">
+        <nav className={`${hideText ? ` md:ml-20 `:` md:ml-64 `} py-6 px-3`}>
             <div className="container max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10">
                 <div className="md:hidden">
                     <Button

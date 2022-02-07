@@ -15,7 +15,7 @@ import Register from 'pages/Register';
 import SupplierRegister from 'pages/SupplierRegister';
 import SupplierPreRegister from 'pages/SupplierPreRegister';
 import BuyerRegister from 'pages/BuyerRegister';
-
+import {useState} from 'react';
 // Font Awesome Style Sheet
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -23,10 +23,11 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'assets/styles/tailwind.css';
 
 function PostAuth(){
+    const [hideText, setHideText] = useState(false);
     return (
         <>
-            <Sidebar />
-            <div className="md:ml-64">
+            <Sidebar hideText={hideText} setHideText={setHideText} />
+            <div className={hideText ? "md:ml-20":"md:ml-64"}>
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/orders" component={Orders} />
                 <Route exact path="/settings" component={Settings} />
