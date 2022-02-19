@@ -21,6 +21,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 // Tailwind CSS Style Sheet
 import 'assets/styles/tailwind.css';
+import 'assets/styles/react-grid-layout.css';
+import 'assets/styles/react-resizable.css';
 
 function PostAuth(){
     const [hideText, setHideText] = useState(false);

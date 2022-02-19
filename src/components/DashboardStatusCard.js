@@ -13,14 +13,14 @@ export default function DashboardStatusCard({
     percentage,
     percentageColor,
     percentageIcon,
-    date,
+    date
 }) {
     return (
-        <div className="flex px-4 mb-10">
+        <div className="flex h-full" >
             <Card className="rounded-md">
-                <CardRow>
+                {/* <CardRow className="h-full"> */}
                     {/* <CardHeader color={color} iconOnly className="mb-0"> */}
-                    <div class="w-full  flex-grow flex flex-1 mb-2 text-right text-sm">
+                    <div class="flex-grow flex flex-1 mb-2 text-right text-sm">
                         <div className=""><Icon name={icon} size="3xl" color={percentageColor} /></div>
                         <div class="flex-grow text-3xl text-gray-900">{amount}</div>
                     </div>
@@ -28,16 +28,16 @@ export default function DashboardStatusCard({
 
                     {/* <CardStatus title={title} className="text-xl" amount={amount} /> */}
                     
-                    <h5 class="w-full pt-5 text-gray-500 font-light tracking-wide mb-1">{title}</h5>
-                </CardRow>
+                    <h5 class="bottom-0 absolute pb-2 text-gray-500 font-light tracking-wide mb-1">{title}</h5>
+                {/* </CardRow> */}
 
-                <CardStatusFooter
+                {/* <CardStatusFooter
                     amount={percentage}
                     color={percentageColor}
                     date={date}
                 >
                     <Icon color={percentageColor} name={percentageIcon} />
-                </CardStatusFooter>
+                </CardStatusFooter> */}
             </Card>
         </div>
     );

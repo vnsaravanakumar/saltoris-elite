@@ -112,7 +112,7 @@ export default function Invoices() {
     }, []);
 
     return (
-        <Card className="rounded-md">
+        <Card className="rounded-md h-full">
             {/* <CardHeader color="orange" contentPosition="left"> */}
             <div className="mb-5">
                 <h2 className="text-gray-700 text-xl mb-3">Invoices</h2>
@@ -121,8 +121,8 @@ export default function Invoices() {
                 </h6>
             </div>
            {/*} </CardHeader> */}
-            <CardBody>
-                <div className="relative h-72">
+            <CardBody className="p-0">
+                <div className="relative h-auto">
                     <canvas id="line-chart"></canvas>
                 </div>
                 <InvoicesTable />

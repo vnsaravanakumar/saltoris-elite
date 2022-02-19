@@ -103,7 +103,7 @@ export default function ServiceRequests() {
         window.myBar = new Chart(ctx, config);
     }, []);
     return (
-        <Card className="rounded-md">
+        <Card className="rounded-md h-full">
             {/* <CardHeader color="pink" contentPosition="left"> */}
             <div className="mb-5">
                 <h2 className="text-gray-700 text-xl mb-3">Orders</h2>
@@ -112,8 +112,8 @@ export default function ServiceRequests() {
                 </h6>
             </div>
             {/* </CardHeader> */}
-            <CardBody>
-                <div className="relative h-72">
+            <CardBody className="p-0">
+                <div className="relative h-auto">
                     <canvas id="bar-chart"></canvas>
                 </div>
                 <OrdersTable />

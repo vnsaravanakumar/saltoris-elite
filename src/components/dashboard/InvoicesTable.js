@@ -45,30 +45,30 @@ export default function InvoicesTable() {
             {/* </CardHeader> */}
             {/* <CardBody> */}
                 <div className="overflow-x-auto">
-                    <table className="items-center w-full bg-transparent border-collapse mt-6">
+                    <table className="items-center w-full bg-transparent border-collapse mt-2 text-xs">
                         <thead>
                             <tr>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 whitespace-nowrap font-light text-left">
                                     Month
                                 </th>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 whitespace-nowrap font-light text-left">
                                     # Clients
                                 </th>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 whitespace-nowrap font-light text-left">
                                     Previous period
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                         {data.map(rowData => 
-                            <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                            <tr className='leading-3'>
+                                <th className="border-b border-gray-200 align-middle font-light whitespace-nowrap px-1 py-2 text-left">
                                     {rowData.month}
                                 </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <td className="border-b border-gray-200 align-middle font-light whitespace-nowrap px-1 py-2 text-left">
                                     {rowData.noClients}
                                 </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                <td className="border-b border-gray-200 align-middle font-light whitespace-nowrap px-1 py-2 text-left">
                                     {rowData.change}
                                 </td>
                             </tr>

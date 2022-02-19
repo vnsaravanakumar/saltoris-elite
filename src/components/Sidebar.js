@@ -22,7 +22,13 @@ export default function Sidebar({hideText, setHideText}) {
             >
                 
                 <div className="flex-col items-stretch min-h-full flex-nowrap px-0 relative">
-                    <div className={` top-2 font-bold  ${ !hideText && ` text-right `} cursor-pointer ml-2 right-6 z-50 transition-all duration-300`} onClick={()=>setHideText(!hideText)}>                          
+                    <div className={` top-2 font-bold  ${ !hideText && ` text-right `} cursor-pointer ml-2 right-6 z-50 transition-all duration-300`} onClick={()=>{
+                        setHideText(!hideText); 
+                        setTimeout(()=>{
+                            console.log("resized");
+                            window.dispatchEvent(new Event('resize'),0)
+                        });
+                        }}>                          
                         {hideText ? ">>" : "<<"}
                     </div>
                     <a
