@@ -1,3 +1,4 @@
+
 import Card from '@material-tailwind/react/Card';
 import CardRow from '@material-tailwind/react/CardRow';
 import CardHeader from '@material-tailwind/react/CardHeader';
@@ -13,14 +14,15 @@ export default function DashboardStatusCard({
     percentage,
     percentageColor,
     percentageIcon,
-    date
+    date,
+    edit
 }) {
     return (
-        <div className="flex h-full" >
+        <div className={"flex h-full "} >
             <Card className="rounded-md">
                 {/* <CardRow className="h-full"> */}
                     {/* <CardHeader color={color} iconOnly className="mb-0"> */}
-                    <div class="flex-grow flex flex-1 mb-2 text-right text-sm">
+                    <div class={"flex-grow flex flex-1 mb-2 text-right text-sm " + (edit ? " pt-3 ":"")}>
                         <div className=""><Icon name={icon} size="3xl" color={percentageColor} /></div>
                         <div class="flex-grow text-3xl text-gray-900">{amount}</div>
                     </div>
