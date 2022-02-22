@@ -261,8 +261,18 @@ export default function CustomizableStatusCard() {
     }
 
     const onLayoutChange = (layout, layouts) => {
+      layout.map(item => {
+        if(item.w === 1) {
+          item.w = 2; 
+          item.h = 4;
+        }
+      })
       localStorage.setItem("layout", JSON.stringify(layouts));
+      setLayout({});
     }
+    const onDrop = (layout, layoutItem, _event) => {
+      alert(`Dropped element props:\n${JSON.stringify(layoutItem, ['x', 'y', 'w', 'h'], 2)}`);
+    };
 
     return (
       <>
@@ -275,10 +285,11 @@ export default function CustomizableStatusCard() {
           layouts={generateLayout(cols, setCols, toolbox, isEdit)}
          // onBreakpointChange={this.handleBreakPointChange}
           onLayoutChange={onLayoutChange}
-          isDraggable={true}
+          isDraggable={isEdit}
           isRearrangeable
-          isResizable={true}
+          isResizable={isEdit}
           rowHeight={23}
+          onDrop={onDrop}
          // draggableHandle=".grid-item__title"
           breakpoints={{ lg: 1280, md: 992, sm: 767, xs: 480, xxs: 0 }}
           cols={cols}
