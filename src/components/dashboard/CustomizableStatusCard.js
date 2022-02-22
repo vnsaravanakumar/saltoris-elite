@@ -15,33 +15,49 @@ const setColumnPartition = (cols, setCols, totalItems) => {
   }
 }
 
-const generateLayout = (cols, setCols, toolbox) => {
+const generateLayout = (cols, setCols, toolbox, isEdit) => {
+  let layout = JSON.parse(localStorage.getItem("layout"));
+
+  //console.log(layout);
+  if(layout) return layout;
+
   const selectedItems = getSelectedItems(toolbox);
   const totalItems = selectedItems.length;
   const result = {};
 
-  //setColumnPartition(cols, setCols, totalItems);
+  setColumnPartition(cols, setCols, totalItems);
 
   Object.keys(cols).map((colKey, key) => {
     key++;
     const col = cols[colKey];
     const direction = (colKey === "xs" || colKey === "xxs") ? "row" : "col";
-    const width = direction === "col" ? (col / totalItems) : col;
+    let  width = direction === "col" ? (col / totalItems) : col;
 
+    if(isEdit && (colKey !== "xs" && colKey !== "xxs")){
+      width = 3
+    }
+
+    let xValue = 0;
+    let yValue = 0;
     result[colKey] = selectedItems.map((item, itemKey) => {
+      if((itemKey + 1) % 6 === 0){ 
+        xValue = 0;
+        yValue = yValue + 4; 
+      }
+
       itemKey++;
       return {
         w: width,
         h: 4,
-        x: direction === "col" ? (itemKey - 1) * width : 0,
+        x: direction === "col" ? (isEdit ? (++xValue - 1) : (itemKey - 1)) * width : 0,
         y: direction === "col" ? 0 : (itemKey - 1) * 4,
-        i: itemKey+""
+        i: item.id+""
       }
     })
   })
 
-  console.log(cols);
-  console.log(result);
+  //console.log(cols);
+  //console.log(result);
   return result;
 }
 
@@ -170,6 +186,39 @@ const statusCardItems = [
     percentageIcon: "arrow_upward",
     percentageColor: "green",
     date: "Since last month"
+  },
+  {
+    id: "6",
+    color: "blue",
+    icon: "poll",
+    title: "Active Bids 2",
+    amount: "9",
+    percentage: "12",
+    percentageIcon: "arrow_upward",
+    percentageColor: "green",
+    date: "Since last month"
+  },
+  {
+    id: "7",
+    color: "blue",
+    icon: "poll",
+    title: "Active Bids 3",
+    amount: "9",
+    percentage: "12",
+    percentageIcon: "arrow_upward",
+    percentageColor: "green",
+    date: "Since last month"
+  },
+  {
+    id: "8",
+    color: "blue",
+    icon: "poll",
+    title: "Active Bids 4",
+    amount: "9",
+    percentage: "12",
+    percentageIcon: "arrow_upward",
+    percentageColor: "green",
+    date: "Since last month"
   }
 ]
 /*
@@ -192,41 +241,43 @@ const getSelectedItems = (toolbox) => {
 }
 
 export default function CustomizableStatusCard() {
-    const [toolbox, setToolbox] = useState([]);
+    const initialRemovedItems = JSON.parse(localStorage.getItem("removedToolbox"))
+    const [toolbox, setToolbox] = useState(initialRemovedItems || []);
     const currentBreakpoint = "lg";
-    const [isEdit, setIsEdit] = useState(true);
-    const [cols, setCols] = useState({ lg: 10, md: 10, sm: 10, xs: 10, xxs: 10 });
-    const [layout, setLayout] = useState();
+    const [isEdit, setIsEdit] = useState(false);
+    const [cols, setCols] = useState({ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 });
+    const [layout, setLayout] = useState({});
 
     const onPutItem = (item) => {
-      setToolbox([...toolbox, item])
+      let removedItems = [...toolbox, item];
+      setToolbox(removedItems);
+      localStorage.setItem("removedToolbox", JSON.stringify(removedItems));
     }
 
     const onGetItem = (selecteItem) => {
-      setToolbox([...toolbox.filter(item => item.id !== selecteItem.id)])
+      let removedItems = [...toolbox.filter(item => item.id !== selecteItem.id)]
+      setToolbox(removedItems)
+      localStorage.setItem("removedToolbox", JSON.stringify(removedItems));
     }
 
-    // useEffect(()=>{
-    //   setLayout({...generateLayout(cols, setCols, toolbox)})
-    // }, [])
-
-    // useEffect(()=>{
-    //   setLayout({...generateLayout(cols, setCols, toolbox)})
-    // }, [toolbox])
+    const onLayoutChange = (layout, layouts) => {
+      localStorage.setItem("layout", JSON.stringify(layouts));
+    }
 
     return (
       <>
-        <ToolBox
+        {isEdit && <ToolBox
           items={toolbox || []}
           onTakeItem={onGetItem}
-        />
+        />}
         <ResponsiveReactCardLayout
           className="layout"
-          layouts={generateLayout(cols, setCols, toolbox)}
+          layouts={generateLayout(cols, setCols, toolbox, isEdit)}
          // onBreakpointChange={this.handleBreakPointChange}
-          isDraggable
+          onLayoutChange={onLayoutChange}
+          isDraggable={true}
           isRearrangeable
-          isResizable={false}
+          isResizable={true}
           rowHeight={23}
          // draggableHandle=".grid-item__title"
           breakpoints={{ lg: 1280, md: 992, sm: 767, xs: 480, xxs: 0 }}
@@ -234,7 +285,7 @@ export default function CustomizableStatusCard() {
         >
           {
             getSelectedItems(toolbox).map((item, key) => {
-              return  <div key={key+1}>
+              return  <div key={item.id}>
                 {isEdit && <div className="cursor-pointer mr-4 absolute right-0" onClick={()=>{onPutItem(item)}}>
                   &times;
                 </div>}
