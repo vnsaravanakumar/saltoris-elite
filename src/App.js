@@ -15,7 +15,7 @@ import Register from 'pages/Register';
 import SupplierRegister from 'pages/SupplierRegister';
 import SupplierPreRegister from 'pages/SupplierPreRegister';
 import BuyerRegister from 'pages/BuyerRegister';
-import {useState} from 'react';
+import React, {useState} from 'react';
 // Font Awesome Style Sheet
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -23,6 +23,11 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'assets/styles/tailwind.css';
 import 'assets/styles/react-grid-layout.css';
 import 'assets/styles/react-resizable.css';
+import { AppStateProvider } from 'services/app.context';
+
+let defaultAppState = {
+    customizeDashboard: false
+};
 
 function PostAuth(){
     const [hideText, setHideText] = useState(false);
@@ -41,7 +46,7 @@ function PostAuth(){
 }
 function App() {
     return (
-        <>
+        <AppStateProvider appState={defaultAppState}>
                 <Switch>
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/profile" component={Profile} />
@@ -56,7 +61,7 @@ function App() {
                 </Switch>
                 {/* <Footer /> */}
 
-        </>
+        </AppStateProvider>
     );
 }
 

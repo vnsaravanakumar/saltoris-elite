@@ -9,11 +9,18 @@ import ProfilePicture from 'assets/img/team-1-800x800.jpg';
 import AuthService from "../services/auth.service";
 import { Link } from 'react-router-dom';
 import NavLink from '@material-tailwind/react/NavLink';
+import { useAppContext } from 'services/app.context';
 
 export default function AdminNavbar({ showSidebar, setShowSidebar, hideText }) {
     const location = useLocation().pathname;
     const currentUser = AuthService.getCurrentUser();
     const history = useHistory();
+
+    const { appState, setAppState } = useAppContext();
+
+    const toggleCustomize = () => {
+        setAppState({...appState, customizeDashboard: !appState.customizeDashboard})
+    }
 
     return (
         <nav className={`${hideText ? ` md:ml-20 `:` md:ml-64 `} py-0 px-0 m-0`}>
@@ -53,7 +60,9 @@ export default function AdminNavbar({ showSidebar, setShowSidebar, hideText }) {
                     {/* <h4 className="uppercase text-sm tracking-wider mt-1">
 
                     </h4> */}
-                    <Icon name="display_settings" color="blueGray" size="2xl" />
+                    <div onClick={toggleCustomize}>
+                        <Icon name="display_settings" color="blueGray" size="2xl" />
+                    </div>
                     <div className="flex">
                         {/* <NavbarInput placeholder="Search" className="text-black" /> */}
 

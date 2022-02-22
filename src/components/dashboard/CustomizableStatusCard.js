@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import DashboardStatusCard from './DashboardStatusCard';
 import { Responsive, WidthProvider } from "react-grid-layout";
+import { useAppContext } from 'services/app.context';
+
 const ResponsiveReactCardLayout = WidthProvider(Responsive);
 
 
@@ -244,7 +246,7 @@ export default function CustomizableStatusCard() {
     const initialRemovedItems = JSON.parse(localStorage.getItem("removedToolbox"))
     const [toolbox, setToolbox] = useState(initialRemovedItems || []);
     const currentBreakpoint = "lg";
-    const [isEdit, setIsEdit] = useState(false);
+    const { appState } = useAppContext();
     const [cols, setCols] = useState({ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 });
     const [layout, setLayout] = useState({});
 
@@ -276,18 +278,18 @@ export default function CustomizableStatusCard() {
 
     return (
       <>
-        {isEdit && <ToolBox
+        {appState.customizeDashboard && <ToolBox
           items={toolbox || []}
           onTakeItem={onGetItem}
         />}
         <ResponsiveReactCardLayout
           className="layout"
-          layouts={generateLayout(cols, setCols, toolbox, isEdit)}
+          layouts={generateLayout(cols, setCols, toolbox, appState.customizeDashboard)}
          // onBreakpointChange={this.handleBreakPointChange}
           onLayoutChange={onLayoutChange}
-          isDraggable={isEdit}
+          isDraggable={appState.customizeDashboard}
           isRearrangeable
-          isResizable={isEdit}
+          isResizable={appState.customizeDashboard}
           rowHeight={23}
           onDrop={onDrop}
          // draggableHandle=".grid-item__title"
@@ -297,12 +299,12 @@ export default function CustomizableStatusCard() {
           {
             getSelectedItems(toolbox).map((item, key) => {
               return  <div key={item.id}>
-                {isEdit && <div className="cursor-pointer mr-4 absolute right-0" onClick={()=>{onPutItem(item)}}>
+                {appState.customizeDashboard && <div className="cursor-pointer mr-4 absolute right-0" onClick={()=>{onPutItem(item)}}>
                   &times;
                 </div>}
                 <DashboardStatusCard
                     {...item}
-                    edit={isEdit}
+                    edit={appState.customizeDashboard}
                 />
               </div>
             })
