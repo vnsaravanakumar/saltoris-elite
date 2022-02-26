@@ -60,7 +60,7 @@ export default function AdminNavbar({ showSidebar, setShowSidebar, hideText }) {
                     {/* <h4 className="uppercase text-sm tracking-wider mt-1">
 
                     </h4> */}
-                    <div onClick={toggleCustomize}>
+                    <div onClick={toggleCustomize} className="cursor-pointer">
                         <Icon name="display_settings" color="blueGray" size="2xl" />
                     </div>
                     <div className="flex">
