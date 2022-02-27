@@ -1,7 +1,7 @@
 import StatusCard from 'components/StatusCard';
 import ActiveTradeRelationsTable from 'components/ActiveTradeRelationsTable';
 import ChartBar from 'components/ChartBar';
-import PageVisitsCard from 'components/PageVisitsCard';
+//import PageVisitsCard from 'components/PageVisitsCard';
 import TrafficCard from 'components/TrafficCard';
 import PendingTradeRequestsTable from 'components/PendingTradeRequestsTable';
 
@@ -27,7 +27,7 @@ export default function Orders() {
                 <div className="container mx-auto max-w-full">
                     <div className="grid grid-cols-1 xl:grid-cols-5">
                         <div className="xl:col-start-1 xl:col-end-4 px-4 mb-14">
-                            <PageVisitsCard />
+                            {/* <PageVisitsCard /> */}
                         </div>
                         <div className="xl:col-start-4 xl:col-end-6 px-4 mb-14">
                             <TrafficCard />

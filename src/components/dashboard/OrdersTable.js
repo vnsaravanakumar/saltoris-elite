@@ -52,7 +52,7 @@ export default function ServiceRequestsTable() {
                 </div> */}
             {/* </CardHeader> */}
             {/* <CardBody> */}
-                <div className="overflow-x-auto">
+                <div className="overflow-auto">
                     <table className="items-center w-full bg-transparent border-collapse mt-2 text-xs ">
                         <thead>
                             <tr>

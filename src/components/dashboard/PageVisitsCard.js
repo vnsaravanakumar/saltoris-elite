@@ -5,7 +5,7 @@ import Button from '@material-tailwind/react/Button';
 
 export default function PageVisitsCard() {
     return (
-        <Card className="rounded-md h-full">
+        <Card className="rounded-md h-full overflow-auto">
             {/* <CardHeader color="blue" contentPosition="none"> */}
                 <div className="w-full flex items-center justify-between">
                     <h2 className=" text-2xl">Page Visits</h2>
@@ -20,7 +20,7 @@ export default function PageVisitsCard() {
                 </div>
             {/* </CardHeader> */}
             <CardBody>
-                <div className="overflow-x-auto">
+                <div className="overflow-auto">
                     <table className="items-center w-full bg-transparent border-collapse">
                         <thead>
                             <tr>
