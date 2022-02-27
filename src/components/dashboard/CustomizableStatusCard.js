@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import DashboardStatusCard from './DashboardStatusCard';
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { useAppContext } from 'services/app.context';
-import { ToolBox } from "./ToolBox";
+import { ToolBox} from "./ToolBox";
+
 const ResponsiveReactCardLayout = WidthProvider(Responsive);
 
 
@@ -188,39 +189,6 @@ const statusCardItems = [
     percentageIcon: "arrow_upward",
     percentageColor: "green",
     date: "Since last month"
-  },
-  {
-    id: "6",
-    color: "blue",
-    icon: "poll",
-    title: "Active Bids 2",
-    amount: "9",
-    percentage: "12",
-    percentageIcon: "arrow_upward",
-    percentageColor: "green",
-    date: "Since last month"
-  },
-  {
-    id: "7",
-    color: "blue",
-    icon: "poll",
-    title: "Active Bids 3",
-    amount: "9",
-    percentage: "12",
-    percentageIcon: "arrow_upward",
-    percentageColor: "green",
-    date: "Since last month"
-  },
-  {
-    id: "8",
-    color: "blue",
-    icon: "poll",
-    title: "Active Bids 4",
-    amount: "9",
-    percentage: "12",
-    percentageIcon: "arrow_upward",
-    percentageColor: "green",
-    date: "Since last month"
   }
 ]
 /*
@@ -255,14 +223,14 @@ export default function CustomizableStatusCard() {
       setToolbox(removedItems);
       localStorage.setItem("removedToolbox", JSON.stringify(removedItems));
     }
-
-    const onGetItem = (selecteItem) => {
+  
+  const onGetItem = (selecteItem) => {
       let removedItems = [...toolbox.filter(item => item.id !== selecteItem.id)]
       setToolbox(removedItems)
       localStorage.setItem("removedToolbox", JSON.stringify(removedItems));
-    }
+  }
 
-    const onLayoutChange = (layout, layouts) => {
+  const onLayoutChange = (layout, layouts) => {
       layout.map(item => {
         if(item.w === 1) {
           item.w = 2; 
@@ -313,3 +281,4 @@ export default function CustomizableStatusCard() {
         </>
       )
 }
+
