@@ -3,8 +3,9 @@ import Card from '@material-tailwind/react/Card';
 import CardRow from '@material-tailwind/react/CardRow';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardStatus from '@material-tailwind/react/CardStatus';
-import CardStatusFooter from '@material-tailwind/react/CardStatusFooter';
+//import CardStatusFooter from '@material-tailwind/react/CardStatusFooter';
 import Icon from '@material-tailwind/react/Icon';
+import StatusCardFooter from './StatusCardFooter';
 
 export default function DashboardStatusCard({
     color,
@@ -32,14 +33,19 @@ export default function DashboardStatusCard({
                     
                     <h5 class="bottom-0 absolute pb-2 text-gray-500 font-light tracking-wide mb-1">{title}</h5>
                 {/* </CardRow> */}
-
-                {/* <CardStatusFooter
-                    amount={percentage}
+                {/* <div
+                    className={`text-sm text-gray-700 pt-4 flex items-center ${className}`}
+                >
+                    <span className={`${Colors[percentageColor]} ml-1 mr-2`}>{amount}</span>
+                    <span className="font-light whitespace-nowrap">{date}</span>
+                </div> */}
+                <StatusCardFooter
                     color={percentageColor}
                     date={date}
+                    className="-pt-4"
                 >
-                    <Icon color={percentageColor} name={percentageIcon} />
-                </CardStatusFooter> */}
+                    <Icon  className="-pt-4" color={percentageColor} name={percentageIcon} />
+                </StatusCardFooter>
             </Card>
         </div>
     );

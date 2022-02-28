@@ -7,6 +7,44 @@ import { ToolBox} from "./ToolBox";
 const ResponsiveReactCardLayout = WidthProvider(Responsive);
 
 
+const statusCardLayouts = {
+  lg: [
+    {w: 2, h: 4, x: 0, y: 0 , i: '1'},
+    {w: 2, h: 4, x: 2, y: 0 , i: '2'},
+    {w: 2, h: 4, x: 4, y: 0 , i: '3'},
+    {w: 2, h: 4, x: 6, y: 0 , i: '4'},
+    {w: 2, h: 4, x: 8, y: 0 , i: '5'}
+  ],
+  md: [
+    {w: 2, h: 4, x: 0, y: 0 , i: '1'},
+    {w: 2, h: 4, x: 2, y: 0 , i: '2'},
+    {w: 2, h: 4, x: 4, y: 0 , i: '3'},
+    {w: 2, h: 4, x: 6, y: 0 , i: '4'},
+    {w: 2, h: 4, x: 8, y: 0 , i: '5'}
+  ],
+  sm: [
+    {w: 2, h: 4, x: 0, y: 0 , i: '1'},
+    {w: 2, h: 4, x: 2, y: 0 , i: '2'},
+    {w: 2, h: 4, x: 4, y: 0 , i: '3'},
+    {w: 2, h: 4, x: 6, y: 0 , i: '4'},
+    {w: 2, h: 4, x: 8, y: 0 , i: '5'}
+  ],
+  xs: [
+    {w: 10, h: 4, x: 0, y: 0 , i: '1'},
+    {w: 10, h: 4, x: 0, y: 4 , i: '2'},
+    {w: 10, h: 4, x: 0, y: 8 , i: '3'},
+    {w: 10, h: 4, x: 0, y: 12, i: '4'},
+    {w: 10, h: 4, x: 0, y: 16, i: '5'}
+  ],
+  xxs: [
+    {w: 10, h: 4, x: 0, y: 0 , i: '1'},
+    {w: 10, h: 4, x: 0, y: 4 , i: '2'},
+    {w: 10, h: 4, x: 0, y: 8 , i: '3'},
+    {w: 10, h: 4, x: 0, y: 12, i: '4'},
+    {w: 10, h: 4, x: 0, y: 16, i: '5'}
+  ]
+};
+
 const setColumnPartition = (cols, setCols, totalItems) => {
   let noCols = cols["lg"];
 
@@ -19,11 +57,12 @@ const setColumnPartition = (cols, setCols, totalItems) => {
 }
 
 const generateLayout = (cols, setCols, toolbox, isEdit) => {
-  let layout = JSON.parse(localStorage.getItem("layout"));
+  let layout = JSON.parse(localStorage.getItem("statusCard.layout"));
 
   //console.log(layout);
   if(layout) return layout;
 
+  //return statusCardLayouts;
   const selectedItems = getSelectedItems(toolbox);
   const totalItems = selectedItems.length;
   const result = {};
@@ -64,75 +103,6 @@ const generateLayout = (cols, setCols, toolbox, isEdit) => {
   return result;
 }
 
-const fourLayout = {
-  lg: [
-    {w: 3, h: 4, x: 0, y: 0, i: '1'},
-    {w: 3, h: 4, x: 3, y: 0, i: '2'},
-    {w: 3, h: 4, x: 6, y: 0, i: '3'},
-    {w: 3, h: 4, x: 9, y: 0, i: '4'}
-  ],
-  md: [
-    {w: 3, h: 4, x: 0, y: 0, i: '1'},
-    {w: 3, h: 4, x: 3, y: 0, i: '2'},
-    {w: 3, h: 4, x: 6, y: 0, i: '3'},
-    {w: 3, h: 4, x: 9, y: 0, i: '4'}
-  ],
-  sm: [
-    {w: 3, h: 4, x: 0, y: 0, i: '1'},
-    {w: 3, h: 4, x: 3, y: 0, i: '2'},
-    {w: 3, h: 4, x: 6, y: 0, i: '3'},
-    {w: 3, h: 4, x: 9, y: 0, i: '4'}
-  ],
-  xs: [
-    {w: 3, h: 4, x: 0, y: 0, i: '1'},
-    {w: 3, h: 4, x: 3, y: 0, i: '2'},
-    {w: 3, h: 4, x: 6, y: 0, i: '3'},
-    {w: 3, h: 4, x: 9, y: 0, i: '4'}
-  ],
-  xxs: [
-    {w: 3, h: 4, x: 0, y: 0, i: '1'},
-    {w: 3, h: 4, x: 3, y: 0, i: '2'},
-    {w: 3, h: 4, x: 6, y: 0, i: '3'},
-    {w: 3, h: 4, x: 9, y: 0, i: '4'}
-  ]
-}
-const statusCardLayouts = {
-    lg: [
-      {w: 2, h: 4, x: 0, y: 0 , i: '1'},
-      {w: 2, h: 4, x: 2, y: 0 , i: '2'},
-      {w: 2, h: 4, x: 4, y: 0 , i: '3'},
-      {w: 2, h: 4, x: 6, y: 0 , i: '4'},
-      {w: 2, h: 4, x: 8, y: 0 , i: '5'}
-    ],
-    md: [
-      {w: 2, h: 4, x: 0, y: 0 , i: '1'},
-      {w: 2, h: 4, x: 2, y: 0 , i: '2'},
-      {w: 2, h: 4, x: 4, y: 0 , i: '3'},
-      {w: 2, h: 4, x: 6, y: 0 , i: '4'},
-      {w: 2, h: 4, x: 8, y: 0 , i: '5'}
-    ],
-    sm: [
-      {w: 2, h: 4, x: 0, y: 0 , i: '1'},
-      {w: 2, h: 4, x: 2, y: 0 , i: '2'},
-      {w: 2, h: 4, x: 4, y: 0 , i: '3'},
-      {w: 2, h: 4, x: 6, y: 0 , i: '4'},
-      {w: 2, h: 4, x: 8, y: 0 , i: '5'}
-    ],
-    xs: [
-      {w: 10, h: 4, x: 0, y: 0 , i: '1'},
-      {w: 10, h: 4, x: 0, y: 4 , i: '2'},
-      {w: 10, h: 4, x: 0, y: 8 , i: '3'},
-      {w: 10, h: 4, x: 0, y: 12, i: '4'},
-      {w: 10, h: 4, x: 0, y: 16, i: '5'}
-    ],
-    xxs: [
-      {w: 10, h: 4, x: 0, y: 0 , i: '1'},
-      {w: 10, h: 4, x: 0, y: 4 , i: '2'},
-      {w: 10, h: 4, x: 0, y: 8 , i: '3'},
-      {w: 10, h: 4, x: 0, y: 12, i: '4'},
-      {w: 10, h: 4, x: 0, y: 16, i: '5'}
-    ]
-  };
 
 const statusCardItems = [
   {
@@ -140,44 +110,44 @@ const statusCardItems = [
     color: "pink",
     icon: "ad_units",
     title: "Orders",
-    amount: "25",
+    amount: "5",
     percentage: "3.48",
     percentageIcon: "arrow_upward",
     percentageColor: "green",
-    date: "Since last month",
+    date: "last 30 days",
   },
   {
     id: "2",
     color:"pink",
     icon: "trending_up",
     title: "Opportunities",
-    amount: "25",
+    amount: "2",
     percentage: "3.48",
     percentageIcon: "arrow_upward",
     percentageColor: "green",
-    date: "Since last month"
+    date: "last 30 days"
   },
   {
     id: "3",
     color: "orange",
     icon: "groups",
     title: "Pending Notifications",
-    amount: "56",
+    amount: "6",
     percentage: "3.48",
     percentageIcon: "arrow_downward",
     percentageColor: "red",
-    date: "Since last week"
+    date: "new notifications"
   },
   {
     id: "4",
     color: "purple",
     icon: "paid",
     title: "Outstanding Invoices",
-    amount: "9000",
+    amount: "2",
     percentage: "1.10",
     percentageIcon: "arrow_upward",
     percentageColor: "orange",
-    date: "Since yesterday"
+    date: "last 30 days"
   },
   {
     id: "5",
@@ -188,7 +158,7 @@ const statusCardItems = [
     percentage: "12",
     percentageIcon: "arrow_upward",
     percentageColor: "green",
-    date: "Since last month"
+    date: "last 30 days"
   }
 ]
 /*
@@ -211,7 +181,7 @@ const getSelectedItems = (toolbox) => {
 }
 
 export default function CustomizableStatusCard() {
-    const initialRemovedItems = JSON.parse(localStorage.getItem("removedToolbox"))
+    const initialRemovedItems = JSON.parse(localStorage.getItem("statusCard.removedToolbox"))
     const [toolbox, setToolbox] = useState(initialRemovedItems || []);
     const currentBreakpoint = "lg";
     const { appState } = useAppContext();
@@ -221,23 +191,25 @@ export default function CustomizableStatusCard() {
     const onPutItem = (item) => {
       let removedItems = [...toolbox, item];
       setToolbox(removedItems);
-      localStorage.setItem("removedToolbox", JSON.stringify(removedItems));
+      localStorage.setItem("statusCard.removedToolbox", JSON.stringify(removedItems));
     }
   
   const onGetItem = (selecteItem) => {
       let removedItems = [...toolbox.filter(item => item.id !== selecteItem.id)]
       setToolbox(removedItems)
-      localStorage.setItem("removedToolbox", JSON.stringify(removedItems));
+      localStorage.setItem("statusCard.removedToolbox", JSON.stringify(removedItems));
   }
 
   const onLayoutChange = (layout, layouts) => {
+      if(!appState.customizeDashboard) return;
+
       layout.map(item => {
         if(item.w === 1) {
           item.w = 2; 
           item.h = 4;
         }
       })
-      localStorage.setItem("layout", JSON.stringify(layouts));
+      localStorage.setItem("statusCard.layout", JSON.stringify(layouts));
       setLayout({});
     }
     const onDrop = (layout, layoutItem, _event) => {

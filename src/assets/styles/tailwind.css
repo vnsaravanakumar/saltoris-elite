@@ -564,6 +564,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-mt-20{
   margin-top: -5rem;
 }
+.ml-1{
+  margin-left: 0.25rem;
+}
 .block{
   display: block;
 }
@@ -957,6 +960,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pb-48{
   padding-bottom: 12rem;
+}
+.pt-4{
+  padding-top: 1rem;
 }
 .text-left{
   text-align: left;
