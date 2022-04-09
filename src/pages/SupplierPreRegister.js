@@ -1,15 +1,15 @@
-import Card from '@material-tailwind/react/Card';
-import CardHeader from '@material-tailwind/react/CardHeader';
-import CardBody from '@material-tailwind/react/CardBody';
-import CardFooter from '@material-tailwind/react/CardFooter';
+import Card from 'components/card/Card';
+import CardHeader from 'components/card/CardHeader';
+import CardBody from 'components/card/CardBody';
+import CardFooter from 'components/card/CardFooter';
 import H5 from '@material-tailwind/react/Heading5';
 import InputIcon from '@material-tailwind/react/InputIcon';
 import Input from '@material-tailwind/react/Input';
 import Button from '@material-tailwind/react/Button';
 import DefaultNavbar from 'components/DefaultNavbar';
 import SimpleFooter from 'components/SimpleFooter';
-import Page from 'components/register/Page';
-import Container from 'components/register/Container';
+import Page from 'components/preauth/Page';
+import Container from 'components/preauth/Container';
 import { useHistory } from 'react-router-dom';
 import React, { useState, useRef } from "react";
 import AuthService from "../services/auth.service";
@@ -35,18 +35,37 @@ export default function SupplierPreRegister() {
     const closeHandler = () => setShowModal(false);
 
     const errorMessages = {
-        email: {
+
+        cinPan: {
             pattern: "Please enter a valid email",
-            required: "Email is required"
+            required: "CIN / PAN is required"
         },
         companyName: {
             required: "Company name is required"
+        },
+        address1: {
+            required: "Address Line 1 is required"
+        },
+        address2: {
+            required: "Address Line 2 is required"
+        },
+        city: {
+            required: "City is required"
+        },
+        state: {
+            required: "State is required"
+        },
+        country: {
+            required: "Country is required"
+        },
+        zipcode: {
+            required: "Zip Code is required"
         }
     }
 
     const errorMessage = (field) => {
             const type = errors?.[field]?.type;
-            return errorMessages[field][type];
+            return errorMessages?.[field]?.[type];
     }
 
     const { register, handleSubmit, formState, control, getValues } = useForm();
@@ -94,31 +113,98 @@ export default function SupplierPreRegister() {
         <>
         <Page>
             <DefaultNavbar />
-            <Container>             
+            <Container className="max-w-md">             
                 {preRegister ? 
                 <Card>
                     <form onSubmit={handleSubmit(handleRegister)} ref={form}>
-                    <div contentPosition="none" className="bg-primary p-5 text-white rounded-lg">
-                        <div className="w-full flex items-center justify-between">
-                            <h2 className="text-xl">Supplier Registration</h2>
+                    <div contentPosition="none" className=" p-5 mb-5 text-white rounded-lg">
+                        <div className="w-full justify-center">
+                            <div className="uppercase font-bold pb-4 text-center text-gray-500 text-[10px]">STEP1</div>
+                            <h2 className="s-text-base text-center font-bold text-gray-800">Enter Company Details</h2>
                         </div>
                     </div>
                     {/* <ClosingAlert color="red" className="text-sm">Company doesn't exists</ClosingAlert> */}
                     <CardBody>
-                        <h6 className="text-lightBlue-500 text-sm mt-3 mb-6 font-light uppercase">
-                            Company Information
-                        </h6>
                         <div className="flex flex-wrap ">
-                            <div className="w-full mb-10  font-light">
+                            <div className="w-full mb-10 lg:w-6/12 lg:pr-4 font-light">
                                 <FormInput 
                                     control={control}
                                     name="companyName"
-                                    label="Company Legal Name"
+                                    label="Company (legal) Name"
                                     validation={errorMessage("companyName")}
                                     rules={{ required: true }}
                                 />
                             </div>
-                            <div className="w-full  mb-10 font-light">
+                            <div className="w-full lg:w-6/12 mb-10 lg:pl-4 font-light">
+                                <FormInput 
+                                    control={control}
+                                    name="cinPan"
+                                    label="CIN / PAN"
+                                    validation={errorMessage("cinPan")}
+                                    rules={{ required: true }}
+                                />
+                            </div>
+                            <div className="w-full lg:w-12/12 mb-10 font-light lg:pr-4 lg:w-6/12 ">
+                                <FormInput 
+                                    control={control}
+                                    name="address1"
+                                    label="Address Line 1"
+                                    validation={errorMessage("address1")}
+                                    rules={{ required: true }}
+                                />
+                            </div>
+                            <div className="w-full lg:w-12/12 mb-10 font-light lg:pl-4 lg:w-6/12">
+                                <FormInput 
+                                    control={control}
+                                    name="address2"
+                                    label="Address Line 2"
+                                    validation={errorMessage("address2")}
+                                    rules={{ required: true }}
+                                />
+                            </div>
+                            <div className="w-full lg:w-6/12 lg:pr-4 mb-10 font-light">
+                                <FormInput 
+                                    control={control}
+                                    name="city"
+                                    label="City"
+                                    validation={errorMessage("city")}
+                                    rules={{ required: true }}
+                                />
+                            </div>
+                            <div className="w-full lg:w-6/12 lg:pl-4 mb-10 font-light">
+                                <FormInput 
+                                    control={control}
+                                    name="state"
+                                    label="State"
+                                    validation={errorMessage("state")}
+                                    rules={{ required: true }}
+                                />
+                            </div>
+                            <div className="w-full lg:w-6/12 lg:pr-4 mb-10 font-light">
+                                <FormInput 
+                                    control={control}
+                                    name="zipcode"
+                                    label="Zipcode"
+                                    validation={errorMessage("zipcode")}
+                                    rules={{ required: true }}
+                                />
+                            </div>
+                            <div className="w-full lg:w-6/12 lg:pl-4 mb-10 font-light">
+                                <FormInput 
+                                    control={control}
+                                    name="country"
+                                    label="Country"
+                                    validation={errorMessage("country")}
+                                    rules={{ required: true }}
+                                    list="country-list"
+                                />
+                                <datalist id="country-list">
+                                    <option value="India" />
+                                    <option value="US" />
+                                    <option value="Australia" />
+                                </datalist>
+                            </div>
+                            {/* <div className="w-full  mb-10 font-light">
                                 <FormInput 
                                     control={control}
                                     name="email"
@@ -127,19 +213,21 @@ export default function SupplierPreRegister() {
                                     rules={{ required: true, pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/ }}
                                     type="email"
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </CardBody>
                     <CardFooter className="-pt-4">
                         <div className="flex justify-center">
                             <Button
-                                color=""
-                                className="bg-primary"
+                                color="blue"
+                                className="bg-primary h-12"
                                 buttonType="submit"
                                 size="md"
                                 ripple="dark"
+                                block={true}
+                                iconOnly={false}
                             >
-                                Register
+                                Get Started
                             </Button>
                         </div>
                     </CardFooter>

@@ -1,5 +1,5 @@
 
-import Card from '@material-tailwind/react/Card';
+import Card from 'components/card/Card';
 import CardRow from '@material-tailwind/react/CardRow';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardStatus from '@material-tailwind/react/CardStatus';

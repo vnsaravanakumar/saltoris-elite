@@ -2,7 +2,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';
 import NavbarInput from '@material-tailwind/react/NavbarInput';
-import Image from '@material-tailwind/react/Image';
+import Image from 'components/image/Image';
 import Dropdown from '@material-tailwind/react/Dropdown';
 import DropdownItem from '@material-tailwind/react/DropdownItem';
 import ProfilePicture from 'assets/img/team-1-800x800.jpg';
@@ -23,7 +23,7 @@ export default function AdminNavbar({ showSidebar, setShowSidebar, hideText }) {
     }
 
     return (
-        <nav className={`${hideText ? ` md:ml-20 `:` md:ml-64 `} py-0 px-0 m-0`}>
+        <nav className={`${hideText ? ` md:ml-20 `:` md:ml-64 `} py-0 px-0 m-0 bg-white border-b border-gray-300`}>
             <div className="container mx-auto flex items-center justify-between  md:pl-5">
                 <div className="md:hidden">
                     <Button
@@ -66,12 +66,16 @@ export default function AdminNavbar({ showSidebar, setShowSidebar, hideText }) {
                     <div className="flex">
                         {/* <NavbarInput placeholder="Search" className="text-black" /> */}
 
-                        <div className="-mr-4 ml-6">
+                        <div className="-mr-4 ml-6 flex items-center">
                             <Dropdown
                                 color="transparent"
                                 buttonText={
-                                    <div className="w-12">
-                                        <Image src={ProfilePicture} rounded />
+                                    <div className="w-auto flex items-center text-black text-left">
+                                        <Image src={ProfilePicture} className="w-8" rounded />
+                                        <div className='pl-2'>
+                                            <div className='!text-base'>Jonh Doe</div>
+                                            <div className='!text-sm font-light !text-gray-700'>Admin</div>
+                                        </div>
                                     </div>
                                 }
                                 rounded
@@ -90,12 +94,13 @@ export default function AdminNavbar({ showSidebar, setShowSidebar, hideText }) {
                                     Something Else
                                 </DropdownItem>
                             </Dropdown>
+                            
                         </div>
                         {currentUser && 
                         <Link href="/">
                             <NavLink ripple="dark" className="cursor-pointer" onClick={() => {AuthService.logout(); history.push("/");}} >
                                 <div className="text-black items-center flex gap-1">
-                                    <Icon name="logout" color="blueGray" size="2xl" />
+                                    <Icon name="logout" color="blueGray" size="xl" />
                                     &nbsp;Logout
                                 </div>
                             </NavLink>

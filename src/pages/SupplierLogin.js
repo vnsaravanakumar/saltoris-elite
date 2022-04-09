@@ -9,8 +9,8 @@ import Checkbox from '@material-tailwind/react/Checkbox';
 import Button from '@material-tailwind/react/Button';
 import DefaultNavbar from 'components/DefaultNavbar';
 import SimpleFooter from 'components/SimpleFooter';
-import Page from 'components/login/Page';
-import Container from 'components/login/Container';
+import Page from 'components/preauth/Page';
+import Container from 'components/preauth/Container';
 import { Link, useHistory } from 'react-router-dom';
 import AuthService from "../services/auth.service";
 import { useForm } from "react-hook-form";
@@ -76,83 +76,62 @@ export default function SupplierLogin() {
       
     return (
         <Page>
-            {/* <DefaultNavbar /> */}
-            <div className="flex justify-end mr-10 mt-6 text-gray-700">
-                <Link to="/">
-                    <div className="ml-4">
-                        <p className="text-2xl font-bold">ELIT</p>
-                        <div className="flex lowercase text-xs">powered by
-                            <img className="w-20 ml-2" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
-                        </div>
-                    </div>
-                </Link>
-                </div>
-                <div className="flex justify-end w-full pr-32 h-full items-center mb-20">
-                    <form onSubmit={handleSubmit(handleLogin)} ref={form}>
-                        <div className="w-96">
-                            {/* <CardHeader color="lightBlue">
-                                <H5 color="white text-xl" style={{ marginBottom: 0 }}>
-                                    Supplier Login
-                                </H5>
-                            </CardHeader> */}
+            <DefaultNavbar />
+            <div className="flex justify-end w-full h-full items-center ">
+                <form onSubmit={handleSubmit(handleLogin)} ref={form}>
+                    <Container className="max-w-sm">
+                        <Card>
                             <div contentPosition="none" className=" p-5 mb-5 text-white rounded-lg">
-                                <div className="w-full flex items-center justify-between">
-                                    <h2 className="text-3xl font-bold text-gray-800">Supplier Login</h2>
+                                <div className="w-full justify-center">
+                                    <div className="uppercase font-bold pb-4 text-center text-gray-500 text-[10px]">sign in | sign up</div>
+                                    <h2 className="text-lg text-center font-bold text-gray-800">Supplier Login</h2>
                                 </div>
                             </div>
-                            <CardBody>
-                                <div className="mb-12 px-4 bg-bb">
-                                    <FormInput 
-                                        control={control}
-                                        name="email"
-                                        label="Email Address"
-                                        iconName="email"
-                                        validation={errorMessage("email")}
-                                        rules={{ required: true, pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/ }}
-                                        type="email"
-                                    />
-                                </div>
-                                <div className="mb-8 px-4">
-                                    <FormInput
-                                        control={control}
-                                        name="password"
-                                        label="Password"
-                                        iconName="lock"
-                                        type="password"
-                                        validation={errorMessage("password")}
-                                        rules={{ required: true, minLength: 8, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$/i}}
-                                    />
-                                </div>
-                                <div className="mb-4 px-4">
-                                    <Checkbox
-                                        color="lightBlue"
-                                        text="Remember Me"
-                                        id="remember"
-                                        size="sm"
-                                    />
-                                </div>
-                            </CardBody>
-                            <CardFooter>
-                                <div className="flex justify-center bg-bb">
-                                    <Button
-                                        color=""
-                                        className="bg-primary"
-                                        buttonType="submit"
-                                        size="md"
-                                        ripple="dark"
-                                        block={true}
-                                        iconOnly={false}
-                                    >
-                                        Login
-                                    </Button>
-                                </div>
-                                <p className="text-xs text-center mt-5 text-gray">New to Elit Collaboration Platform?</p>
-                                <p className="text-xs text-center mt-2 underline font-semibold text-gray"><Link to="/supplier-register">Register Now</Link></p>
-                            </CardFooter>
-                        </div>
-                    </form>
-                </div>
-            {/* <SimpleFooter /> */}
+                            <div className="mb-6 px-4 bg-bb">
+                                <FormInput 
+                                    control={control}
+                                    name="email"
+                                    label="User Name"
+                                    iconName="email"
+                                    validation={errorMessage("email")}
+                                    rules={{ required: true, pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/ }}
+                                    type="email"
+                                />
+                            </div>
+                            <div className="mb-2 px-4">
+                                <FormInput
+                                    control={control}
+                                    name="password"
+                                    label="Password"
+                                    iconName="lock"
+                                    type="password"
+                                    validation={errorMessage("password")}
+                                    rules={{ required: true, minLength: 8, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$/i}}
+                                />
+                            </div>
+                            <div className="mb-4 px-4 text-[10px] text-gray-700 text-right">
+                                Forgot Username or Forgot Password
+                            </div>
+                            <div className="flex justify-center bg-bb">
+                                <Button
+                                    color="blue"
+                                    className="bg-primary"
+                                    buttonType="submit"
+                                    size="md"
+                                    ripple="dark"
+                                    block={true}
+                                    iconOnly={false}
+                                >
+                                    Login
+                                </Button>
+                            </div>
+                            <p className="text-xs text-center mt-5 text-black font-semibold">Join the ELIT Network | 
+                            <span className="text-xs text-center mt-2 font-semibold text-primary-blue"><Link to="/supplier-register"> Register Here</Link></span></p>
+                        </Card>
+                    </Container>
+
+                </form>
+            </div>
         </Page>
     );
 }

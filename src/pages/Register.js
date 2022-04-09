@@ -7,8 +7,8 @@ import InputIcon from '@material-tailwind/react/InputIcon';
 import Button from '@material-tailwind/react/Button';
 import DefaultNavbar from 'components/DefaultNavbar';
 import SimpleFooter from 'components/SimpleFooter';
-import Page from 'components/login/Page';
-import Container from 'components/login/Container';
+import Page from 'components/preauth/Page';
+import Container from 'components/preauth/Container';
 
 export default function Register() {
     return (

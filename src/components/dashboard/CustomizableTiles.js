@@ -24,9 +24,9 @@ const layouts = {
     {w: 4, h: 11, x: 8, y: 0, minH:11, maxH:11, minW:3 ,i: '3'}
   ],
   md: [
-    {w: 4, h: 11, x: 0, y: 0, minH:11, minW:4 , i: '1'},
-    {w: 3, h: 11, x: 4, y: 0, minH:11, minW:3 ,i: '2'},
-    {w: 3, h: 11, x: 8, y: 0, minH:11, minW:3 ,i: '3'}
+    {w: 4, h: 11, x: 0, y: 0,  i: '1'},
+    {w: 3, h: 11, x: 4, y: 0, i: '2'},
+    {w: 3, h: 11, x: 8, y: 0,i: '3'}
   ],
   sm: [
     {w: 12, h: 11, x: 0, y: 0, minH:11, minW:4 , i: '1'},

@@ -1,4 +1,4 @@
-import Card from '@material-tailwind/react/Card';
+import Card from 'components/card/Card';
 import CardRow from '@material-tailwind/react/CardRow';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardStatus from '@material-tailwind/react/CardStatus';
@@ -16,7 +16,7 @@ export default function StatusCard({
     date,
 }) {
     return (
-        <div className="px-4 mb-10">
+        <div className="px-4 mb-10 shadow-none">
             <Card className="rounded-md">
                 <CardRow>
                     {/* <CardHeader color={color} iconOnly className="mb-0"> */}

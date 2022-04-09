@@ -15,13 +15,14 @@ import Button from '@material-tailwind/react/Button';
 import VeoliaLogo from 'assets/img/veolia-logo-transparent.png';
 import Image from '@material-tailwind/react/Image';
 import AuthService from "../services/auth.service";
+import logo from "../assets/img/logo.jpg";
 
 export default function DefaultNavbar() {
     const [openNavbar, setOpenNavbar] = useState(false);
     const currentUser = AuthService.getCurrentUser();
 
     return (<>                            
-        <Navbar color="transparent" navbar className="bg-black/40">
+        <Navbar color="transparent" className="text-primary-blue bg-white  mb-0 !rounded-none">
             <NavbarContainer>
                 {/* <NavbarWrapper>
                     <Link to="/">
@@ -39,23 +40,38 @@ export default function DefaultNavbar() {
                 <NavbarWrapper>
                     <Link to="/">
                         <NavbarBrand>
-                            <div className="ml-4">
-                                <p className="text-2xl">ELIT</p>
-                                <div className="flex lowercase text-xs">powered by
-                                    <img className="w-20" src="https://static.wixstatic.com/media/3780c2_8636388420094d4e9de71388d5a89363~mv2.png/v1/fill/w_260,h_80,al_c,q_85,usm_0.66_1.00_0.01/logo.webp" />
-                                </div>
+                            <div className="ml-4 text-primary-blue">
+                                <img className="w-20" src={logo} />
                             </div>
                         </NavbarBrand>
                     </Link>
                     <NavbarToggler
                         onClick={() => setOpenNavbar(!openNavbar)}
-                        color="white"
+                        color="transparent"
+                        className="ml-4 text-primary-blue"
                     />
                 </NavbarWrapper>
                 <NavbarCollapse open={openNavbar}>
                     <Nav>
                         <div className="flex flex-col z-50 lg:flex-row lg:items-center">
-                            {currentUser && 
+                        <Link to="/supplier-register">
+                        <Button
+                            color="transparent"
+                            buttonType="link"
+                            size="md"
+                            className="text-primary-blue capitalize"
+                        >
+                            Sign up
+                        </Button>
+                        </Link>
+                        {!currentUser && (
+                        <Link to="/supplier-login"><Button
+                            size="md"
+                            className="!py-1.5 text-white bg-primary-blue capitalize"
+                        >
+                            Login
+                        </Button></Link>)}
+                            {/* {currentUser && 
                             <Link to="/dashboard">
                                 <NavLink ripple="light">
                                     <Icon name="dashboard" size="2xl" />
@@ -64,9 +80,11 @@ export default function DefaultNavbar() {
                             </Link>}
                             {!currentUser && (<>
                             <Link to="/buyer-login">
-                                <NavLink ripple="light">
+                                <NavLink ripple="light" >
+                                    
                                     <Icon name="shopping_bag" size="2xl" />
-                                    &nbsp;Buyer
+                                    <span className="text-primary-blue"> &nbsp;Buyer
+                                    </span>
                                 </NavLink>
                             </Link>
                             <Link to="/supplier-login">
@@ -81,7 +99,7 @@ export default function DefaultNavbar() {
                                     <Icon name="logout" size="2xl" />
                                     &nbsp;Logout
                                 </NavLink>
-                            </Link>}
+                            </Link>} */}
                             {/* <NavLink
                                 href="https://material-tailwind.com/components?ref=mtk"
                                 target="_blank"

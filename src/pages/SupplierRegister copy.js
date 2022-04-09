@@ -22,11 +22,32 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 export default function SupplierRegister({data: { companyName, email, registrationNumber}}) {
 
-    const { handleSubmit, trigger, formState, control, watch, getValues, setValue, reset } = useForm();
+    const { handleSubmit, trigger, formState, control, watch, getValues, setValue, reset } = useForm({defaultValues: {
+        useEmail: true,
+        email: email
+      }});
     const form = useRef();
     
 
     const errorMessages = {
+        companyName: {
+            required: "Company legal name is required"
+        },
+        registrationNumber: {
+            required: "Registration number is required"
+        },
+        address1: {
+            required: "Address Line 1 is required"
+        },
+        country: {
+            required: "Country is required"
+        },
+        city: {
+            required: "City is required"
+        },
+        pincode: {
+            required: "Pincode is required"
+        },
         firstName: {
             required: "First name is required"
         },
@@ -44,9 +65,6 @@ export default function SupplierRegister({data: { companyName, email, registrati
         },
         confirmPassword: {
             required: "Confirm password is required"
-        },
-        acceptTerms: {
-            required: "Accept terms is required"
         }
 
     }
@@ -60,7 +78,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
 
     const errorMessage = (field) => {
         const type = errors?.[field]?.type;
-        return type ? errorMessages?.[field]?.[type] : "";
+        return type ? errorMessages[field][type] : "";
     }
     
     const [loading, setLoading] = useState(false);
@@ -77,10 +95,10 @@ export default function SupplierRegister({data: { companyName, email, registrati
     //     console.log(data, name, type)
     // })
 
-    // useEffect(() => {
-    //     //const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
-    //     reset({ email, useEmail: true }); // asynchronously reset your form values
-    //   }, [reset])
+    useEffect(() => {
+        //const result = await fetch('./api/formValues.json'); // result: { firstName: 'test', lastName: 'test2' }
+        reset({companyName, registrationNumber, email, useEmail: true }); // asynchronously reset your form values
+      }, [reset])
 
     const onCaptchaChange = (value) => {
         console.log("Captcha value:", value);
@@ -148,14 +166,92 @@ export default function SupplierRegister({data: { companyName, email, registrati
                 </div>
             </CardHeader> */}
             <form onSubmit={handleSubmit(handleRegister)} ref={form}>
-            <div contentPosition="none" className=" p-5 mb-5 text-white rounded-lg">
-                <div className="w-full justify-center">
-                    <div className="uppercase font-bold pb-4 text-center text-gray-500 text-[10px]">STEP2</div>
-                    <h2 className="text-lg text-center font-bold text-gray-800 s-text-base">Enter Company Administrator Details</h2>
+            <div contentPosition="none" className="bg-primary p-5 text-white rounded-lg">
+                <div className="w-full flex items-center justify-between">
+                    <h2 className="text-xl">Supplier Registration</h2>
                 </div>
             </div>
             <CardBody>
-                    <div className="flex flex-wrap ">
+                    <h6 className="text-lightBlue-500 text-sm mt-3 mb-6 font-light uppercase">
+                        Company Information
+                    </h6>
+                    <div className="flex flex-wrap mt-10">
+                        <div className="w-full lg:w-6/12 mb-10 lg:pr-4 font-light">
+                            <FormInput 
+                                control={control}
+                                name="companyName"
+                                label="Company Legal Name"
+                                validation={errorMessage("companyName")}
+                                rules={{ required: true }}
+                                defaultValue={companyName}
+                            />
+                        </div>
+                        <div className="w-full lg:w-6/12 mb-10 lg:pl-4 font-light">
+                            <FormInput 
+                                control={control}
+                                name="registrationNumber"
+                                label="Corporate Identification Number (CIN)"
+                                validation={errorMessage("registrationNumber")}
+                                //rules={{ required: true }}
+                                defaultValue={registrationNumber}
+                                disabled
+                            />
+                        </div>
+                        <div className="w-full lg:w-12/12 mb-10 font-light">
+                            <FormInput 
+                                control={control}
+                                name="address1"
+                                label="Address Line 1"
+                                validation={errorMessage("address1")}
+                                rules={{ required: true }}
+                            />
+                        </div>
+                        <div className="w-full lg:w-12/12 mb-10 font-light">
+                            <FormInput 
+                                control={control}
+                                name="address2"
+                                label="Address Line 2"
+                            />
+                        </div>
+                        <div className="w-full lg:w-4/12 lg:pr-4 mb-10 font-light">
+                            <FormInput 
+                                control={control}
+                                name="country"
+                                label="Country"
+                                validation={errorMessage("country")}
+                                rules={{ required: true }}
+                                list="country-list"
+                            />
+                            <datalist id="country-list">
+                                <option value="India" />
+                                <option value="US" />
+                                <option value="Australia" />
+                            </datalist>
+                        </div>
+                        <div className="w-full lg:w-4/12 lg:px-4 mb-10 font-light">
+                            <FormInput 
+                                control={control}
+                                name="city"
+                                label="City"
+                                validation={errorMessage("city")}
+                                rules={{ required: true }}
+                            />
+                        </div>
+                        <div className="w-full lg:w-4/12 lg:pl-4 mb-10 font-light">
+                            <FormInput 
+                                control={control}
+                                name="pincode"
+                                label="Pincode"
+                                validation={errorMessage("pincode")}
+                                rules={{ required: true }}
+                            />
+                        </div>
+                    </div>
+
+                    <h6 className="text-lightBlue-500 text-sm my-6 font-light uppercase">
+                        Administrator Information
+                    </h6>
+                    <div className="flex flex-wrap mt-10">
                         <div className="w-full lg:w-6/12 lg:pr-4 mb-10 font-light">
                             <FormInput 
                                 control={control}
@@ -174,7 +270,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
                                 rules={{ required: true }}
                             />
                         </div>
-                        <div className="w-full lg:w-6/12 lg:pr-4 mb-10 font-light">
+                        <div className="w-full lg:w-6/12 lg:pr-4 mb-2 font-light">
                             <FormInput 
                                 control={control}
                                 name="businessRole"
@@ -183,18 +279,18 @@ export default function SupplierRegister({data: { companyName, email, registrati
                                 rules={{ required: true }}
                             />
                         </div>
-                        <div className="w-full lg:w-6/12 lg:pl-4 mb-10 font-light">
+                        <div className="w-full lg:w-6/12 lg:pl-4 mb-2 font-light">
                             <FormInput 
                                 control={control}
                                 name="email"
                                 label="Username (Email Address)"
                                 validation={errorMessage("email")}
                                 rules={{ required: true }}
-                               // value={watchUseEmail ? email : ''}
-                               // defaultValue={email}
+                                value={watchUseEmail ? email : ''}
+                                defaultValue={email}
                             />
                         </div>
-                        {/* <div className="w-full lg:w-12/12 mb-5 font-light flex justify-end">
+                        <div className="w-full lg:w-12/12 mb-5 font-light flex justify-end">
                         <div className="w-full lg:w-6/12 lg:pl-4 font-light">
                             <FormCheckbox 
                                 control={control}
@@ -203,7 +299,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
                                 text="Use my email as username"
                             />
                             </div>
-                        </div> */}
+                        </div>
                         <div className="w-full lg:w-6/12 lg:pr-4 mb-10 font-light">
                             <FormInput 
                                 control={control}
@@ -237,7 +333,7 @@ export default function SupplierRegister({data: { companyName, email, registrati
                     <FormCheckbox 
                         control={control}
                         name="acceptTerms"
-                        //rules={{ required: true }}
+                        rules={{ required: true }}
                         text=""
                         onChange={onAcceptTermsChange}
                     />
@@ -245,14 +341,12 @@ export default function SupplierRegister({data: { companyName, email, registrati
                 </div>
                 <div className="flex justify-center mb-8">
                     <Button
-                        color="blue"
-                        className="bg-primary h-12 disabled:opacity-50"
+                        color=""
+                        className="bg-primary disabled:opacity-50"
                         buttonType="submit"
                         size="md"
                         ripple="dark"
                         disabled={!captchaVerified || !acceptTerms}
-                        block={true}
-                        iconOnly={false}
                     >
                         Register
                     </Button>

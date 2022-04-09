@@ -20,11 +20,15 @@ export const FormInput = ({ name, label, control, validation, rules, ...rest }) 
             render={({ field }) => ( 
                 rest?.iconName ? 
                     <InputIcon
+
                         {...field}
                         {...rest}
+                        className="text-xs"
                 /> : <Input
+                        
                         {...field}
                         {...rest}
+                        className="text-xs"
                     />
             )}
         />
