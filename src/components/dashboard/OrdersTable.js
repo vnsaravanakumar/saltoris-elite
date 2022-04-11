@@ -2,8 +2,9 @@ import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
 import Button from '@material-tailwind/react/Button';
+import FitlerIcon from 'assets/img/filter-icon.svg';
 
-export default function ServiceRequestsTable() {
+export default function OrdersTable() {
     const data = [
         {
             requestId: 10180540,
@@ -37,6 +38,20 @@ export default function ServiceRequestsTable() {
 
     return (
         <>
+                    <Card className="!rounded-3xl h-full overflow-auto">
+            {/* <CardHeader color="orange" contentPosition="left"> */}
+            {/* <div className="mb-5">
+                <h2 className="text-gray-700 text-xl mb-3">Invoices</h2>
+                <h6 className="text-gray-700 text-xs font-medium mb-5">
+                    Current data as of yesterday at 3:18pm
+                </h6>
+            </div> */}
+            <div className='flex'>
+                <h2 className="font-semibold  flex-1 text-table-heading py-3">Order Details</h2>
+                <div ><img src={FitlerIcon} className='bg-mild rounded-full p-3 h-auto' /></div>
+            </div>
+        {/*} </CardHeader> */}
+            <CardBody className="p-0">
          {/* <Card className="rounded-md"> */}
             {/* <CardHeader color="blue" contentPosition="none"> */}
                 {/* <div className="w-full flex items-center justify-between">
@@ -53,42 +68,42 @@ export default function ServiceRequestsTable() {
             {/* </CardHeader> */}
             {/* <CardBody> */}
                 <div className="overflow-auto">
-                    <table className="items-center w-full bg-transparent border-collapse mt-2 text-xs ">
-                        <thead>
+                    <table className="items-center w-full bg-transparent border-collapse mt-2 text-sm">
+                        <thead className=' text-table-heading font-light uppercase'>
                             <tr>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3 whitespace-nowrap font-light text-left">
+                                <th className="px-2 bg-mild rounded-l-xl align-middle py-3 whitespace-nowrap text-left">
                                     Request ID
                                 </th>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3  whitespace-nowrap font-light text-left">
+                                <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
                                     Company
                                 </th>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3  whitespace-nowrap font-light text-left">
+                                <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
                                     Type of Request
                                 </th>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3  whitespace-nowrap font-light text-left">
+                                <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
                                     Expiring On
                                 </th>
-                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-3  whitespace-nowrap font-light text-left">
+                                <th className="px-2 bg-mild rounded-r-xl  align-middle  py-3 whitespace-nowrap  text-center">
                                     Status
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                         {data.map(rowData => 
-                            <tr className='leading-3'>
-                                <th className="border-b border-gray-200 align-middle font-light  whitespace-nowrap px-1 py-2 text-left">
+                            <tr className='leading-3 text-primary-ketic'>
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-left">
                                     {rowData.requestId}
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light whitespace-nowrap px-1 py-2 text-left">
+                                </td>
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
                                     {rowData.company}
                                 </td>
-                                <td className="border-b border-gray-200 align-middle font-light whitespace-nowrap px-1 py-2 text-left">
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
                                     {rowData.type}
                                 </td>
-                                <td className="border-b border-gray-200 align-middle font-light whitespace-nowrap px-1 py-2 text-left">
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
                                     {rowData.expiringOn}
                                 </td>
-                                <td className="border-b border-gray-200 align-middle font-light whitespace-nowrap px-1 py-2 text-left">
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
                                     {rowData.status}
                                 </td>
                             </tr>
@@ -98,6 +113,8 @@ export default function ServiceRequestsTable() {
                 </div>
             {/* </CardBody>
         </Card> */}
+                            </CardBody>
+        </Card>
         </>
     );
 }

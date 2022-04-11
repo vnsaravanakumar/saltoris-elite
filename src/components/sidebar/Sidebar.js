@@ -52,7 +52,7 @@ export default function Sidebar({hideText, setHideText}) {
                 hideText={hideText}
             />
             <div
-                className={`h-screen border-r border-gray-300 fixed top-0 md:left-0 ${showSidebar} ${hideText ? `w-18`:`w-64`} overflow-y-auto flex-row flex-nowrap overflow-hidden bg-white z-10 py-4 {${hideText ? ` px-2 `:` px-6 `} transition-all duration-300`}
+                className={`h-screen border-r border-gray-300 pt-0 fixed top-0 md:left-0 ${showSidebar} ${hideText ? `w-18`:`w-64`} overflow-y-auto flex-row flex-nowrap overflow-hidden bg-white z-10 pt-2 {${hideText ? ` px-2 `:` px-6 `} transition-all duration-300`}
             >
                 
                 <div className="flex-col items-stretch min-h-full flex-nowrap px-0 relative">
@@ -69,26 +69,26 @@ export default function Sidebar({hideText, setHideText}) {
                         
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-2 text-center w-full inline-block"
+                        className="text-center w-full inline-block"
                     >
                         <Link to="/dashboard">
                             {/* <img
                                 src={VeoliaLogo}
                                 className="w-36 h-auto "
                             /> */}
-                            <div className="ml-2">
+                            <div >
                                 {/* <p className="text-2xl text-left">ELIT</p>
                                 {!hideText && <div className="flex lowercase text-xs">powered by
                                     <img className="w-20" src={SaltorisLogo} />
                                 </div>} */}
                                 {/* <div className="flex lowercase "> */}
-                                    <img className="" src={SaltorisLogo} />
+                                    <img src={SaltorisLogo} className="h-10"/>
                                 {/* </div> */}
                             </div>
                         </Link>
                     </a>
                     <div className="flex flex-col">
-                        <hr className="my-4 min-w-full" />
+                        <hr className="mb-4 min-w-full" />
 
                         <ul className="flex-col min-w-full flex list-none text-black">
                             {menuOptions.map(items =>

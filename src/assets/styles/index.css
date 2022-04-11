@@ -15,8 +15,13 @@
 @import 'tailwindcss/utilities';
 @import '@material-tailwind/react/tailwind.css';
 
-@layer utilities {
-    .-translate-x-1\/2 {
-        --tw-translate-x: -50% !important;
-    }
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+    @apply text-[#171725];
+  }
+  h2 {
+    @apply text-xl;
+  }
 }

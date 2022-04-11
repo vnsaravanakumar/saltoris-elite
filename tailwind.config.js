@@ -8,6 +8,12 @@ module.exports = {
           'secondary-red': '#FC5A5A',
           'secondary-blue': '#50B5FF',
           'secondary-green': '#3DD598',
+          'mild': '#FAFAFB',
+          'table-heading': '#44444F',
+          'status-sent': "#3DD598",
+          'status-payment': "#50B5FF",
+          'status-approved': "#0062FF",
+          'status-rejected': "#FC5A5A"
       },
       fontFamily: {
           sans: ['Poppins', 'sans-serif'],

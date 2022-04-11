@@ -6,6 +6,9 @@ import CardStatusFooter from '@material-tailwind/react/CardStatusFooter';
 import Icon from '@material-tailwind/react/Icon';
 import DashboardStatusCard from './DashboardStatusCard';
 import Invoices from 'components/dashboard/Invoices';
+import InvoicesChart from 'components/dashboard/InvoicesChart';
+import InvoicesTable from 'components/dashboard/InvoicesTable';
+import OrdersTable from 'components/dashboard/OrdersTable';
 import ChartBar from 'components/ChartBar';
 // import PageVisitsCard from 'components/PageVisitsCard';
 // import TrafficCard from 'components/TrafficCard';
@@ -19,9 +22,9 @@ import React, { lazy, Suspense } from 'react';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 const layouts = {
   lg: [
-    {w: 4, h: 11, x: 0, y: 0, minH:11, maxH:11, minW:3 , i: '1'},
-    {w: 4, h: 11, x: 4, y: 0, minH:11, maxH:11, minW:3 ,i: '2'},
-    {w: 4, h: 11, x: 8, y: 0, minH:11, maxH:11, minW:3 ,i: '3'}
+    {w: 4,  x: 0, y: 0, minH:5, maxH:11, minW:3 , i: '1'},
+    {w: 4,  x: 4, y: 0, minH:5, maxH:11, minW:3 ,i: '2'},
+    {w: 4,  x: 8, y: 0, minH:5, maxH:11, minW:3 ,i: '3'}
   ],
   md: [
     {w: 4, h: 11, x: 0, y: 0,  i: '1'},
@@ -48,19 +51,24 @@ const layouts = {
 const tileItems = [
   {
     id: "1",
-    title: "Orders",
-    component: "Orders"
+    title: "OrdersTable",
+    component: "OrdersTable"
   },  
   {
     id: "2",
-    title: "Invoices",
-    component: "Invoices"
+    title: "InvoicesChart",
+    component: "InvoicesChart"
   },
   {
     id: "3",
-    title: "PageVisitsCard",
-    component: "PageVisitsCard"
-  }
+    title: "InvoicesTable",
+    component: "InvoicesTable"
+  },
+  // {
+  //   id: "3",
+  //   title: "PageVisitsCard",
+  //   component: "PageVisitsCard"
+  // }
 ];
 
 const generateLayout = () => {
@@ -132,7 +140,7 @@ export default function CustomizableTiles({props}) {
       >
            { getSelectedItems(toolbox).map((item, key) => {
               return  <div key={item.id}>
-                {appState.customizeDashboard && <div className="cursor-pointer mr-4 absolute right-0" onClick={()=>{onPutItem(item)}}>
+                {appState.customizeDashboard && <div className="cursor-pointer mr-1 p-1 absolute right-0" onClick={()=>{onPutItem(item)}}>
                   &times;
                 </div>}
                 <Suspense fallback={<div>Loading...</div>}>

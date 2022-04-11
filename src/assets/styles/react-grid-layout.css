@@ -68,8 +68,8 @@
   transform: rotate(90deg);
 }
 .react-grid-item > .react-resizable-handle.react-resizable-handle-se {
-  bottom: 0;
-  right: 0;
+  bottom: 8px;
+  right: 8px;
   cursor: se-resize;
 }
 .react-grid-item > .react-resizable-handle.react-resizable-handle-nw {
@@ -131,10 +131,10 @@
 }
 .react-grid-item {
   box-sizing: border-box;
-  border-radius: 6px;
+  border-radius: 24px;
 }
 .react-grid-item:not(.react-grid-placeholder) {
-  background: #ccc;
+  background: none;
   border: 1px solid blacku;
 }
 .react-grid-item.resizing {
