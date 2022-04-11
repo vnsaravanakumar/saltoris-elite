@@ -13,7 +13,7 @@ const ToolBoxItem = ({item, onTakeItem}) => {
 }
 export const ToolBox = ({items, onTakeItem}) => {
     return (
-      <div className="toolbox pl-3 pt-2 bg-gray-200">
+      items.length > 0 && <div className="toolbox p-2 bg-gray-200 rounded-2xl ml-2">
         {/* <span className="toolbox__title">Toolbox</span> */}
         <div className="flex gap-2">
           {items.map(item => (

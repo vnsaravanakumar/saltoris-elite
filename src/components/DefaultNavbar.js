@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory  } from 'react-router-dom';
 import Navbar from '@material-tailwind/react/Navbar';
 import NavbarContainer from '@material-tailwind/react/NavbarContainer';
 import NavbarWrapper from '@material-tailwind/react/NavbarWrapper';
@@ -20,7 +20,8 @@ import logo from "../assets/img/logo.jpg";
 export default function DefaultNavbar() {
     const [openNavbar, setOpenNavbar] = useState(false);
     const currentUser = AuthService.getCurrentUser();
-
+    const history = useHistory();
+    currentUser && history.push('/dashboard');
     return (<>                            
         <Navbar color="transparent" className="text-primary-blue bg-white  mb-0 !rounded-none">
             <NavbarContainer>

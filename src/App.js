@@ -23,6 +23,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'assets/styles/tailwind.css';
 import 'assets/styles/react-grid-layout.css';
 import 'assets/styles/react-resizable.css';
+import './App.css';
 import { AppStateProvider } from 'services/app.context';
 
 let defaultAppState = {
@@ -48,14 +49,15 @@ function App() {
     return (
         <AppStateProvider appState={defaultAppState}>
                 <Switch>
-                    <Route exact path="/" component={Landing} />
+                    {/* <Route exact path="/" component={Landing} /> */}
+                    <Route exact path="/" component={SupplierLogin} />
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/supplier-login" component={SupplierLogin} />
                     <Route exact path="/buyer-login" component={BuyerLogin} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/supplier-register" component={SupplierPreRegister} />
-                    <Route exact path="/buyer-register" component={BuyerRegister} />
+                    {/* <Route exact path="/buyer-register" component={BuyerRegister} /> */}
                     <Route exact path="/*" component={PostAuth} />
                     {/* <Redirect from="*" to="/postAuth" /> */}
                 </Switch>

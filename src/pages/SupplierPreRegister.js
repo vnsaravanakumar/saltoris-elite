@@ -9,7 +9,7 @@ import Button from '@material-tailwind/react/Button';
 import DefaultNavbar from 'components/DefaultNavbar';
 import SimpleFooter from 'components/SimpleFooter';
 import Page from 'components/preauth/Page';
-import Container from 'components/preauth/Container';
+import Container from 'components/preauth/RegistrationContainer';
 import { useHistory } from 'react-router-dom';
 import React, { useState, useRef } from "react";
 import AuthService from "../services/auth.service";
@@ -113,7 +113,7 @@ export default function SupplierPreRegister() {
         <>
         <Page>
             <DefaultNavbar />
-            <Container className="max-w-md">             
+            <Container className="max-w-md transition-none">             
                 {preRegister ? 
                 <Card>
                     <form onSubmit={handleSubmit(handleRegister)} ref={form}>

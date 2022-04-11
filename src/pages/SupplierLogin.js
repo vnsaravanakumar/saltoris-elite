@@ -77,7 +77,7 @@ export default function SupplierLogin() {
     return (
         <Page>
             <DefaultNavbar />
-            <div className="flex justify-end w-full h-full items-center ">
+            <div className="flex justify-end w-full h-full relative items-center ">
                 <form onSubmit={handleSubmit(handleLogin)} ref={form}>
                     <Container className="max-w-sm">
                         <Card>

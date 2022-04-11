@@ -113,7 +113,7 @@ export default function InvoicesChart() {
     }, []);
 
     return (
-        <Card className="!rounded-3xl h-full overflow-auto">
+        <Card className="!rounded-3xl h-full overflow-auto text-sm">
             {/* <CardHeader color="orange" contentPosition="left"> */}
             <div className='flex'>
                 <h2 className="font-semibold  flex-1 text-table-heading py-3">Invoice Chart</h2>

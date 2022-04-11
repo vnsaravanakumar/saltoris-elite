@@ -16,12 +16,3 @@
 @import '@material-tailwind/react/tailwind.css';
 
 
-@layer base {
-  h1 {
-    @apply text-2xl;
-    @apply text-[#171725];
-  }
-  h2 {
-    @apply text-xl;
-  }
-}

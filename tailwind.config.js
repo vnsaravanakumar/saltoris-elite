@@ -1,6 +1,20 @@
 module.exports = {
   content: [ './public/index.html', './src/**/*.js', './src/components/**/*.js', './src/pages/**/*.js'],
   theme: {
+      typography: (theme) => {
+        console.log(theme("fontSize.3xl"));
+        return {
+          DEFAULT: {
+            css: {
+              '.sm': {
+                fontSize: theme("fontSize.xs"), // not reflected.
+                // fontSize: "32px", // reflected
+                marginTop: theme("margin.4"), // reflected
+              },
+            },
+          },
+        };
+      },
       colors: {
           'primary-blue': '#3A6AFD',
           'primary-ketic': '#171725',
@@ -22,7 +36,7 @@ module.exports = {
           body: ['Poppins'],
       },
       fontSize: {
-          'sm': ['10px'] 
+          'sm': ['10px', '16px'] 
       },
       extend: {
           colors: {
