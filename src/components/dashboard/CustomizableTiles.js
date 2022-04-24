@@ -125,7 +125,7 @@ export default function CustomizableTiles({props}) {
         onTakeItem={onGetItem}
       />}
       <ResponsiveReactGridLayout
-          className="layout"
+          className="layout text-sm"
           layouts={generateLayout()}
          // onBreakpointChange={this.handleBreakPointChange}
           onLayoutChange={onLayoutChange}
@@ -140,7 +140,7 @@ export default function CustomizableTiles({props}) {
       >
            { getSelectedItems(toolbox).map((item, key) => {
               return  <div key={item.id}>
-                {appState.customizeDashboard && <div className="cursor-pointer mr-1 p-1 absolute right-0" onClick={()=>{onPutItem(item)}}>
+                {appState.customizeDashboard && <div className=" cursor-pointer mr-1 p-1 absolute right-0" onClick={()=>{onPutItem(item)}}>
                   &times;
                 </div>}
                 <Suspense fallback={<div>Loading...</div>}>

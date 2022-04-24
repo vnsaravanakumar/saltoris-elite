@@ -68,7 +68,7 @@ export default function OrdersTable() {
             {/* </CardHeader> */}
             {/* <CardBody> */}
                 <div className="overflow-auto">
-                    <table className="items-center w-full bg-transparent border-collapse mt-2 text-sm">
+                    <table className="items-center w-full bg-transparent border-collapse mt-2">
                         <thead className=' text-table-heading font-light uppercase'>
                             <tr>
                                 <th className="px-2 bg-mild rounded-l-xl align-middle py-3 whitespace-nowrap text-left">

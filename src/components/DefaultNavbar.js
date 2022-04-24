@@ -42,7 +42,7 @@ export default function DefaultNavbar() {
                     <Link to="/">
                         <NavbarBrand>
                             <div className="ml-4 text-primary-blue">
-                                <img className="w-20" src={logo} />
+                                <img className="w-24" src={logo} />
                             </div>
                         </NavbarBrand>
                     </Link>
