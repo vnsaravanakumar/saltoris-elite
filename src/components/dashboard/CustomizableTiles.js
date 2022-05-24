@@ -7,7 +7,9 @@ import Icon from '@material-tailwind/react/Icon';
 import DashboardStatusCard from './DashboardStatusCard';
 import Invoices from 'components/dashboard/Invoices';
 import InvoicesChart from 'components/dashboard/InvoicesChart';
+import PurchaseOrderChart from 'components/dashboard/PurchaseOrderChart';
 import InvoicesTable from 'components/dashboard/InvoicesTable';
+import ActivityFeed from 'components/dashboard/ActivityFeed';
 import OrdersTable from 'components/dashboard/OrdersTable';
 import ChartBar from 'components/ChartBar';
 // import PageVisitsCard from 'components/PageVisitsCard';
@@ -20,16 +22,18 @@ import { useAppContext } from 'services/app.context';
 import React, { lazy, Suspense } from 'react';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
-const layouts = {
+const defaultLayouts = {
   lg: [
-    {w: 4,  x: 0, y: 0, minH:5, maxH:11, minW:3 , i: '1'},
-    {w: 4,  x: 4, y: 0, minH:5, maxH:11, minW:3 ,i: '2'},
-    {w: 4,  x: 8, y: 0, minH:5, maxH:11, minW:3 ,i: '3'}
+    {x: 0, y: 0, w: 3, h: 11, i: '1'},
+    {x: 3, y: 0, w: 3, h: 11, i: '2'},
+    {x: 6, y: 0, w: 2, h: 11, i: '3'},
+    {x: 0, y: 10, w: 3, h: 11, i: '4'}
   ],
   md: [
-    {w: 4, h: 11, x: 0, y: 0,  i: '1'},
-    {w: 3, h: 11, x: 4, y: 0, i: '2'},
-    {w: 3, h: 11, x: 8, y: 0,i: '3'}
+    {x: 0, y: 0, w: 4, h: 11, i: '1'},
+    {x: 4, y: 0, w: 4, h: 11, i: '2'},
+    {x: 4, y: 0, w: 2, h: 11, i: '3'},
+    {x: 0, y: 10, w: 3, h: 11, i: '4'}
   ],
   sm: [
     {w: 12, h: 11, x: 0, y: 0, minH:11, minW:4 , i: '1'},
@@ -51,33 +55,40 @@ const layouts = {
 const tileItems = [
   {
     id: "1",
-    title: "OrdersTable",
-    component: "OrdersTable"
-  },  
-  {
-    id: "2",
     title: "InvoicesChart",
     component: "InvoicesChart"
   },
   {
+    id: "2",
+    title: "PurchaseOrderChart",
+    component: "PurchaseOrderChart"
+  },
+  {
     id: "3",
+    title: "ActivityFeed",
+    component: "ActivityFeed"
+  },
+  {
+    id: "4",
+    title: "OrdersTable",
+    component: "OrdersTable"
+  },  
+  {
+    id: "5",
     title: "InvoicesTable",
     component: "InvoicesTable"
   },
-  // {
-  //   id: "3",
-  //   title: "PageVisitsCard",
-  //   component: "PageVisitsCard"
-  // }
+
 ];
 
 const generateLayout = () => {
   let savedLayout = JSON.parse(localStorage.getItem("dashboardTiles.layout"));
-
+  
+console.log(savedLayout);
   //console.log(layout);
   if(savedLayout) return savedLayout;
 
-  return layouts
+  return defaultLayouts
 }
 
 const getSelectedItems = (toolbox) => {
@@ -116,7 +127,7 @@ export default function CustomizableTiles({props}) {
       }
     })
     localStorage.setItem("dashboardTiles.layout", JSON.stringify(layouts));
-    setLayout({});
+    setLayout(layouts);
   }
     return (
       <>
@@ -125,6 +136,7 @@ export default function CustomizableTiles({props}) {
         onTakeItem={onGetItem}
       />}
       <ResponsiveReactGridLayout
+          autoSize={true}
           className="layout text-sm"
           layouts={generateLayout()}
          // onBreakpointChange={this.handleBreakPointChange}
@@ -135,8 +147,8 @@ export default function CustomizableTiles({props}) {
           rowHeight={30}
          // draggableHandle=".grid-item__title"
           breakpoints={{ lg: 1280, md: 992, sm: 767, xs: 480, xxs: 0 }}
-          cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
-          
+          cols={{ lg: 10, md: 10, sm: 6, xs: 4, xxs: 2 }}
+          //margin={{lg: [0, 0], md: [0, 0]}}
       >
            { getSelectedItems(toolbox).map((item, key) => {
               return  <div key={item.id}>

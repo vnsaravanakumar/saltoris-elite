@@ -34,16 +34,21 @@ export default function Sidebar({hideText, setHideText}) {
         )
     }
 
+    // const menuOptions = [
+    //     {name:"dashboard", icon:DashboardIcon, displayName:"Dashboard"},
+    //     {name:"orders", icon:OrdersIcon, displayName:"Orders"},
+    //     {name:"invoices", icon:InvoicesIcon, displayName:"Invoices"},
+    //     {name:"my-bids", icon:BidsIcon, displayName:"My Bids"},
+    //     {name:"opportunities", icon:OpportunitiesIcon, displayName:"Opportunities"},
+    //     {name:"trade-relationships", icon:RelationshipsIcon, displayName:"TradeRelationships"},
+    //     {name:"quality", icon:QualityIcon, displayName:"Quality"}
+    // ]
     const menuOptions = [
-        {name:"dashboard", icon:DashboardIcon, displayName:"Dashboard"},
-        {name:"orders", icon:OrdersIcon, displayName:"Orders"},
+        {name:"overview", icon:DashboardIcon, displayName:"Overview"},
+        {name:"purchaseOrders", icon:OrdersIcon, displayName:"Purchase Orders"},
         {name:"invoices", icon:InvoicesIcon, displayName:"Invoices"},
-        {name:"my-bids", icon:BidsIcon, displayName:"My Bids"},
-        {name:"opportunities", icon:OpportunitiesIcon, displayName:"Opportunities"},
-        {name:"trade-relationships", icon:RelationshipsIcon, displayName:"TradeRelationships"},
-        {name:"quality", icon:QualityIcon, displayName:"Quality"}
+        {name:"customerLedger", icon:BidsIcon, displayName:"Customer Ledger"}
     ]
-
     return (
         <>
             <AdminNavbar

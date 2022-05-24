@@ -25,9 +25,9 @@ module.exports = {
           'mild': '#FAFAFB',
           'table-heading': '#44444F',
           'status-sent': "#3DD598",
-          'status-payment': "#50B5FF",
-          'status-approved': "#0062FF",
-          'status-rejected': "#FC5A5A"
+          'status-due': "#50B5FF",
+          'status-paid': "#0062FF",
+          'status-overdue': "#FC5A5A",
       },
       fontFamily: {
           sans: ['Poppins', 'sans-serif'],

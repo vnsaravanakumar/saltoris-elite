@@ -7,32 +7,40 @@ import FitlerIcon from 'assets/img/filter-icon.svg';
 export default function OrdersTable() {
     const data = [
         {
-            requestId: 10180540,
-            company: "Tesla",
-            type: "Type of Request",
-            expiringOn: "01-02-2022",
-            status: "Accept"
+            poNumber: 10180540,
+            poDate: "01-02-2022",
+            shipTo: "Mumbai",
+            material: "material 1",
+            quantity: 600,
+            amount: 5000,
+            status: "Received"
         },
         {
-            requestId: 10180541,
-            company: "Apple",
-            type: "Type of Request",
-            expiringOn: "06-12-2022",
-            status: "Accept"
+            poNumber: 13243240,
+            poDate: "02-21-2022",
+            shipTo: "Japan",
+            material: "material 2",
+            quantity: 700,
+            amount: 20000,
+            status: "Dispatched"
         },
         {
-            requestId: 10180542,
-            company: "Intel",
-            type: "Type of Request",
-            expiringOn: "03-04-2022",
-            status: "Reject"
+            poNumber: 231432453,
+            poDate: "02-02-2022",
+            shipTo: "New York",
+            material: "material 3",
+            quantity: 1700,
+            amount: 26000,
+            status: "Invoiced"
         },        
         {
-            requestId: 10180544,
-            company: "Honda",
-            type: "Type of Request",
-            expiringOn: "10-20-2022",
-            status: "Reject"
+            poNumber: 243324234,
+            poDate: "01-02-2022",
+            shipTo: "Berlin",
+            material: "material 4",
+            quantity: 500,
+            amount: 8000,
+            status: "Received"
         }
     ]
 
@@ -47,7 +55,7 @@ export default function OrdersTable() {
                 </h6>
             </div> */}
             <div className='flex'>
-                <h2 className="font-semibold  flex-1 text-table-heading py-3">Order Details</h2>
+                <h2 className="font-semibold  flex-1 text-table-heading py-3">Purchase Orders</h2>
                 <div ><img src={FitlerIcon} className='bg-mild rounded-full p-3 h-auto' /></div>
             </div>
         {/*} </CardHeader> */}
@@ -69,19 +77,25 @@ export default function OrdersTable() {
             {/* <CardBody> */}
                 <div className="overflow-auto">
                     <table className="items-center w-full bg-transparent border-collapse mt-2">
-                        <thead className=' text-table-heading font-light uppercase'>
+                        <thead className=' text-table-heading font-light uppercase text-xs'>
                             <tr>
                                 <th className="px-2 bg-mild rounded-l-xl align-middle py-3 whitespace-nowrap text-left">
-                                    Request ID
+                                    PO Number
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    Company
+                                    PO Date
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    Type of Request
+                                    Ship To
+                                </th>                                
+                                <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
+                                    Material
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    Expiring On
+                                    Quantity
+                                </th>
+                                <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
+                                    Amount
                                 </th>
                                 <th className="px-2 bg-mild rounded-r-xl  align-middle  py-3 whitespace-nowrap  text-center">
                                     Status
@@ -92,20 +106,26 @@ export default function OrdersTable() {
                         {data.map(rowData => 
                             <tr className='leading-3 text-primary-ketic'>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-left">
-                                    {rowData.requestId}
+                                    {rowData.poNumber}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
-                                    {rowData.company}
+                                    {rowData.poDate}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
-                                    {rowData.type}
+                                    {rowData.shipTo}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
-                                    {rowData.expiringOn}
+                                    {rowData.material}
+                                </td>
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
+                                    {rowData.quantity}
+                                </td>
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
+                                    {rowData.amount}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
                                     {rowData.status}
-                                </td>
+                                </td>                                                                
                             </tr>
                         )}
                         </tbody>

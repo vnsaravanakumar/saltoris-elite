@@ -13,37 +13,74 @@ import Icon from '@material-tailwind/react/Icon';
 import {useState} from 'react';
 
 export default function Orders() {
+    // const data = [
+    //     {
+    //         requestId: 10180540,
+    //         company: "Tesla",
+    //         type: "Type of Request",
+    //         expiringOn: "01-02-2022",
+    //         status: "Accept"
+    //     },
+    //     {
+    //         requestId: 10180541,
+    //         company: "Apple",
+    //         type: "Type of Request",
+    //         expiringOn: "06-12-2022",
+    //         status: "Accept"
+    //     },
+    //     {
+    //         requestId: 10180542,
+    //         company: "Intel",
+    //         type: "Type of Request",
+    //         expiringOn: "03-04-2022",
+    //         status: "Reject"
+    //     },        
+    //     {
+    //         requestId: 10180544,
+    //         company: "Honda",
+    //         type: "Type of Request",
+    //         expiringOn: "10-20-2022",
+    //         status: "Reject"
+    //     }
+    // ]
     const data = [
         {
-            requestId: 10180540,
-            company: "Tesla",
-            type: "Type of Request",
-            expiringOn: "01-02-2022",
-            status: "Accept"
+            poNumber: 10180540,
+            poDate: "01-02-2022",
+            shipTo: "Mumbai",
+            material: "material 1",
+            quantity: 600,
+            amount: 5000,
+            status: "Received"
         },
         {
-            requestId: 10180541,
-            company: "Apple",
-            type: "Type of Request",
-            expiringOn: "06-12-2022",
-            status: "Accept"
+            poNumber: 13243240,
+            poDate: "02-21-2022",
+            shipTo: "Japan",
+            material: "material 2",
+            quantity: 700,
+            amount: 20000,
+            status: "Dispatched"
         },
         {
-            requestId: 10180542,
-            company: "Intel",
-            type: "Type of Request",
-            expiringOn: "03-04-2022",
-            status: "Reject"
+            poNumber: 231432453,
+            poDate: "02-02-2022",
+            shipTo: "New York",
+            material: "material 3",
+            quantity: 1700,
+            amount: 26000,
+            status: "Invoiced"
         },        
         {
-            requestId: 10180544,
-            company: "Honda",
-            type: "Type of Request",
-            expiringOn: "10-20-2022",
-            status: "Reject"
+            poNumber: 243324234,
+            poDate: "01-02-2022",
+            shipTo: "Berlin",
+            material: "material 4",
+            quantity: 500,
+            amount: 8000,
+            status: "Received"
         }
     ]
-
     const [expandedRows, setExpandedRows] = useState([]);
     const handleShowHideDetails = (requestId) => {
         let elmIndex = expandedRows.findIndex(id => id === requestId);
@@ -71,16 +108,22 @@ export default function Orders() {
                                 <th className="px-2 bg-mild rounded-l-xl align-middle py-3 whitespace-nowrap text-left">
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-left">
-                                    Request ID
+                                    PO Number
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    Company
+                                    PO Date
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    Type of Request
+                                    Ship To
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    Expiring On
+                                    Material
+                                </th>
+                                <th className="px-2 bg-mild rounded-r-xl  align-middle  py-3 whitespace-nowrap  text-center">
+                                    Quantity
+                                </th>
+                                <th className="px-2 bg-mild rounded-r-xl  align-middle  py-3 whitespace-nowrap  text-center">
+                                    Amount
                                 </th>
                                 <th className="px-2 bg-mild rounded-r-xl  align-middle  py-3 whitespace-nowrap  text-center">
                                     Status
@@ -99,16 +142,22 @@ export default function Orders() {
                                     </div>
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-4 text-left">
-                                    {rowData.requestId}
+                                    {rowData.poNumber}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-4 text-center">
-                                    {rowData.company}
+                                    {rowData.poDate}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-4 text-center">
-                                    {rowData.type}
+                                    {rowData.shipTo}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-4 text-center">
-                                    {rowData.expiringOn}
+                                    {rowData.material}
+                                </td>
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-4 text-center">
+                                    {rowData.quantity}
+                                </td>
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-4 text-center">
+                                    {rowData.amount}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-4 text-center">
                                     {rowData.status}

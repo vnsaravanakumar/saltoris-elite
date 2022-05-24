@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import DashboardStatusCard from './DashboardStatusCard';
+import StatusCard from './StatusCard';
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { useAppContext } from 'services/app.context';
 import { ToolBox} from "./ToolBox";
@@ -9,18 +9,18 @@ const ResponsiveReactCardLayout = WidthProvider(Responsive);
 
 const statusCardLayouts = {
   lg: [
-    {w: 2, h: 4, x: 0, y: 0 , i: '1'},
-    {w: 2, h: 4, x: 2, y: 0 , i: '2'},
-    {w: 2, h: 4, x: 4, y: 0 , i: '3'},
-    {w: 2, h: 4, x: 6, y: 0 , i: '4'},
-    {w: 2, h: 4, x: 8, y: 0 , i: '5'}
+    {w: 4, h: 4, x: 0, y: 0 , i: '1'},
+    {w: 4, h: 4, x: 2, y: 0 , i: '2'},
+    {w: 4, h: 4, x: 4, y: 0 , i: '3'},
+    {w: 4, h: 4, x: 6, y: 0 , i: '4'},
+    {w: 4, h: 4, x: 8, y: 0 , i: '5'}
   ],
   md: [
-    {w: 2, h: 4, x: 0, y: 0 , i: '1'},
-    {w: 2, h: 4, x: 2, y: 0 , i: '2'},
-    {w: 2, h: 4, x: 4, y: 0 , i: '3'},
-    {w: 2, h: 4, x: 6, y: 0 , i: '4'},
-    {w: 2, h: 4, x: 8, y: 0 , i: '5'}
+    {w: 4, h: 4, x: 0, y: 0 , i: '1'},
+    {w: 4, h: 4, x: 2, y: 0 , i: '2'},
+    {w: 4, h: 4, x: 4, y: 0 , i: '3'},
+    {w: 4, h: 4, x: 6, y: 0 , i: '4'},
+    {w: 4, h: 4, x: 8, y: 0 , i: '5'}
   ],
   sm: [
     {w: 2, h: 4, x: 0, y: 0 , i: '1'},
@@ -103,64 +103,87 @@ const generateLayout = (cols, setCols, toolbox, isEdit) => {
   return result;
 }
 
-
 const statusCardItems = [
   {
     id: "1",
-    color: "pink",
-    icon: "ad_units",
-    title: "Orders",
-    amount: "5",
-    percentage: "3.48",
-    percentageIcon: "arrow_upward",
-    percentageColor: "green",
-    date: "last 30 days",
+    title: "Invoices",
+    amount: 27632,
+    percentage: "+2.5",
+    lastYearAmount: 21340
   },
   {
     id: "2",
-    color:"pink",
-    icon: "trending_up",
-    title: "Opportunities",
-    amount: "2",
-    percentage: "3.48",
-    percentageIcon: "arrow_upward",
-    percentageColor: "green",
-    date: "last 30 days"
+    title: "Payments",    
+    amount: 12632,
+    percentage: "+2.5",
+    lastYearAmount: 10500
   },
   {
     id: "3",
-    color: "orange",
-    icon: "groups",
-    title: "Pending Notifications",
-    amount: "6",
-    percentage: "3.48",
-    percentageIcon: "arrow_downward",
-    percentageColor: "red",
-    date: "new notifications"
-  },
-  {
-    id: "4",
-    color: "purple",
-    icon: "paid",
-    title: "Outstanding Invoices",
-    amount: "2",
-    percentage: "1.10",
-    percentageIcon: "arrow_upward",
-    percentageColor: "orange",
-    date: "last 30 days"
-  },
-  {
-    id: "5",
-    color: "blue",
-    icon: "poll",
-    title: "Active Bids",
-    amount: "9",
-    percentage: "12",
-    percentageIcon: "arrow_upward",
-    percentageColor: "green",
-    date: "last 30 days"
+    title: "Orders",
+    amount: 20199,
+    percentage: "+0.5",
+    lastYearAmount: 19000
   }
 ]
+
+// const statusCardItems = [
+//   {
+//     id: "1",
+//     color: "pink",
+//     icon: "ad_units",
+//     title: "Orders",
+//     amount: "5",
+//     percentage: "3.48",
+//     percentageIcon: "arrow_upward",
+//     percentageColor: "green",
+//     date: "last 30 days",
+//   },
+//   {
+//     id: "2",
+//     color:"pink",
+//     icon: "trending_up",
+//     title: "Invoices",
+//     amount: "2",
+//     percentage: "3.48",
+//     percentageIcon: "arrow_upward",
+//     percentageColor: "green",
+//     date: "last 30 days"
+//   },
+//   {
+//     id: "3",
+//     color: "orange",
+//     icon: "groups",
+//     title: "Payments",
+//     amount: "6",
+//     percentage: "3.48",
+//     percentageIcon: "arrow_downward",
+//     percentageColor: "red",
+//     date: "new notifications"
+//   },
+//   {
+//     id: "4",
+//     color: "purple",
+//     icon: "paid",
+//     title: "Outstanding Invoices",
+//     amount: "2",
+//     percentage: "1.10",
+//     percentageIcon: "arrow_upward",
+//     percentageColor: "orange",
+//     date: "last 30 days"
+//   },
+//   {
+//     id: "5",
+//     color: "blue",
+//     icon: "poll",
+//     title: "Active Bids",
+//     amount: "9",
+//     percentage: "12",
+//     percentageIcon: "arrow_upward",
+//     percentageColor: "green",
+//     date: "last 30 days"
+//   }
+// ]
 /*
 ,
   {
@@ -185,7 +208,7 @@ export default function CustomizableStatusCard() {
     const [toolbox, setToolbox] = useState(initialRemovedItems || []);
     const currentBreakpoint = "lg";
     const { appState } = useAppContext();
-    const [cols, setCols] = useState({ lg: 12, md: 12, sm: 12, xs: 12, xxs: 12 });
+    const [cols, setCols] = useState({ lg: 14, md: 14, sm: 12, xs: 12, xxs: 12 });
     const [layout, setLayout] = useState({});
 
     const onPutItem = (item) => {
@@ -242,7 +265,7 @@ export default function CustomizableStatusCard() {
                 {appState.customizeDashboard && <div className="cursor-pointer mr-4 absolute right-0" onClick={()=>{onPutItem(item)}}>
                   &times;
                 </div>}
-                <DashboardStatusCard
+                <StatusCard
                     {...item}
                     edit={appState.customizeDashboard}
                 />

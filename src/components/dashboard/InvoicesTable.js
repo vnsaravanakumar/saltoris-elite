@@ -7,40 +7,44 @@ import FitlerIcon from 'assets/img/filter-icon.svg';
 export default function InvoicesTable() {
     const data = [
         {
-            buyer: "John Doe",
-            invoice: "#01208",
-            date: "Mar 21, 2022, 3:30pm",
-            amount: "5000",
-            status: "Sent"
+            invoiceId: "John Doe",
+            legalEntityName: "#01208",
+            invoiceAmount: "Mar 21, 2022, 3:30pm",
+            invoiceDate: "5000",
+            dueDate: "Sent",
+            status: "paid"
         },
         {
-            buyer: "Jake ammuneal",
-            invoice: "#01209",
-            date: "Mar 21, 2022, 3:30pm",
-            amount: "13000",
-            status: "Sent"
+            invoiceId: "John Doe",
+            legalEntityName: "#01208",
+            invoiceAmount: "Mar 21, 2022, 3:30pm",
+            invoiceDate: "5000",
+            dueDate: "Sent",
+            status: "overdue"
         },
         {
-            buyer: "Kay Siger",
-            invoice: "#01210",
-            date: "Mar 21, 2022, 3:30pm",
-            amount: "4000",
-            status: "Payment"
+            invoiceId: "John Doe",
+            legalEntityName: "#01208",
+            invoiceAmount: "Mar 21, 2022, 3:30pm",
+            invoiceDate: "5000",
+            dueDate: "Sent",
+            status: "paid"
         },        
         {
-            buyer: "Kevin Patt",
-            invoice: "#01211",
-            date: "Mar 21, 2022, 3:30pm",
-            amount: "6000",
-            status: "Approved"
+            invoiceId: "John Doe",
+            legalEntityName: "#01208",
+            invoiceAmount: "Mar 21, 2022, 3:30pm",
+            invoiceDate: "5000",
+            dueDate: "Sent",
+            status: "due"
         }
     ]
 
     const statusColor = {
         sent: "#3DD598",
-        payments: "#50B5FF",
-        approved: "#0062FF",
-        rejected: "#FC5A5A"
+        due: "#50B5FF",
+        paid: "#0062FF",
+        overdue: "#FC5A5A"
     }
     return (
         <>
@@ -53,7 +57,7 @@ export default function InvoicesTable() {
                 </h6>
             </div> */}
             <div className='flex'>
-                <h2 className="font-semibold  flex-1 text-table-heading py-3">Invoice Details</h2>
+                <h2 className="font-semibold  flex-1 text-table-heading py-3">Invoice</h2>
                 <div ><img src={FitlerIcon} className='bg-mild rounded-full p-3 h-auto' /></div>
             </div>
         {/*} </CardHeader> */}
@@ -75,22 +79,25 @@ export default function InvoicesTable() {
             {/* <CardBody> */}
                 <div className="overflow-auto rounded-lg">
                     <table className="items-center w-full bg-transparent border-collapse mt-2">
-                        <thead className=' text-table-heading font-light uppercase'>
+                        <thead className=' text-table-heading font-light uppercase text-xs'>
                             <tr>
                                 <th className="px-2 bg-mild rounded-l-xl align-middle py-3 whitespace-nowrap text-left">
-                                    buyer
+                                    Invoice ID
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    invoice no
+                                    Legal Entity Name
                                 </th>
                                 <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
-                                    due date
+                                    Invoice Amount
+                                </th>                                
+                                <th className="px-2 bg-mild align-middle py-3 whitespace-nowrap text-center">
+                                    Invoice Date
                                 </th>
                                 <th className="px-2 bg-mild align-middle  py-3 whitespace-nowrap text-center">
-                                    order amount
+                                    Due Date
                                 </th>
                                 <th className="px-2 bg-mild rounded-r-xl  align-middle  py-3 whitespace-nowrap  text-center">
-                                    status
+                                    Status
                                 </th>
                             </tr>
                         </thead>
@@ -98,16 +105,19 @@ export default function InvoicesTable() {
                         {data.map(rowData => 
                             <tr className='leading-3 text-primary-ketic'>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-left">
-                                    {rowData.buyer}
+                                    {rowData.invoiceId}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
-                                    {rowData.invoice}
+                                    {rowData.legalEntityName}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
-                                    {rowData.date}
+                                    {"+ $"+rowData.invoiceAmount}
                                 </td>
                                 <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
-                                    {"+ $"+rowData.amount}
+                                    {rowData.invoiceDate}
+                                </td>
+                                <td className=" align-middle font-light whitespace-nowrap px-1 py-6 text-center">
+                                    {rowData.dueDate}
                                 </td>
                                 <td className={"align-middle font-light whitespace-nowrap px-1 py-3  text-center " + "text-status-"+rowData.status.toLowerCase()}>
                                     <div className='bg-mild py-2 px-1 rounded-lg '>{rowData.status}</div>
@@ -117,9 +127,9 @@ export default function InvoicesTable() {
                         </tbody>
                     </table>
                     <span className='text-status-payment'></span>
-                    <span className=' text-status-sent'></span>
-                    <span className='  text-status-approved '></span>
-                    <span className=' text-status-rejected'></span>
+                    <span className=' text-status-due'></span>
+                    <span className='  text-status-paid '></span>
+                    <span className=' text-status-overdue'></span>
                 </div>
             {/* </CardBody>
         </Card> */}

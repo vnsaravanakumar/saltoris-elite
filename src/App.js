@@ -36,8 +36,8 @@ function PostAuth(){
         <>
             <Sidebar hideText={hideText} setHideText={setHideText} />
             <div className={hideText ? "md:ml-20":"md:ml-64"}>
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/orders" component={Orders} />
+                <Route exact path="/overview" component={Dashboard} />
+                <Route exact path="/purchaseOrders" component={Orders} />
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/tables" component={Tables} />
                 <Route exact path="/maps" component={Maps} />

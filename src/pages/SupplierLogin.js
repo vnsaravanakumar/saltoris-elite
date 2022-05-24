@@ -55,7 +55,7 @@ export default function SupplierLogin() {
           const prom = AuthService.login("email", password)
           prom.then(
             () => {
-              history.push("/dashboard");
+              history.push("/overview");
             },
             (error) => {
               const resMessage =

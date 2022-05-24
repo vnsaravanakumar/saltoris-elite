@@ -6,7 +6,7 @@ import CardBody from '@material-tailwind/react/CardBody';
 import InvoicesTable from './InvoicesTable';
 import FitlerIcon from 'assets/img/filter-icon.svg';
 
-export default function InvoicesChart() {
+export default function PurchaseOrderChart() {
     useEffect(() => {
         var config = {
             type: 'line',
@@ -22,14 +22,14 @@ export default function InvoicesChart() {
                 ],
                 datasets: [
                     {
-                        label: "Invoices",
+                        label: "Purchase Orders",
                         backgroundColor: '#3DD598',
                         borderColor: '#3DD598',
-                        data: [65, 66, 67, 68, 56, 67, 75],
+                        data: [65, 78, 66, 44, 56, 67, 75],
                         fill: false,
                     },
                     {
-                        label: "Payments",
+                        label: "Dispatch",
                         fill: false,
                         backgroundColor: '#0062FF',
                         borderColor: '#0062FF',
@@ -64,7 +64,6 @@ export default function InvoicesChart() {
                     intersect: true,
                 },
                 scales: {
-                    maintainAspectRatio: false,
                     xAxes: [
                         {
                             ticks: {
@@ -112,7 +111,7 @@ export default function InvoicesChart() {
                 },
             },
         };
-        var ctx = document.getElementById('invoice-chart').getContext('2d');
+        var ctx = document.getElementById('purchase-order-chart').getContext('2d');
         window.myLine = new Chart(ctx, config);
     }, []);
 
@@ -120,13 +119,13 @@ export default function InvoicesChart() {
         <Card className="!rounded-3xl h-full overflow-auto">
             {/* <CardHeader color="orange" contentPosition="left"> */}
             <div className='flex'>
-                <h2 className="font-semibold  flex-1 text-table-heading py-3">Invoice Chart</h2>
+                <h2 className="font-semibold  flex-1 text-table-heading py-3">Purchase Order Chart</h2>
                 <div ><img src={FitlerIcon} className='bg-mild rounded-full p-3 h-auto' /></div>
             </div>
            {/*} </CardHeader> */}
-            <CardBody className="p-0 relative">
-                <div className="relative h-80 m-auto">
-                    <canvas id="invoice-chart"></canvas>
+            <CardBody className="p-0">
+                <div className="relative h-80">
+                    <canvas id="purchase-order-chart" className=''></canvas>
                 </div>
             </CardBody>
             <div className='text-xs flex justify-center pt-4'>Last Updated: <i>Thursday, March 10, 2022, 02:48:23 IST</i></div>
