@@ -2,6 +2,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Sidebar from 'components/sidebar/Sidebar';
 import Dashboard from 'pages/Dashboard';
 import Orders from 'pages/Orders';
+import Invoices from 'pages/Invoices';
 import Settings from 'pages/Settings';
 import Tables from 'pages/Tables';
 import Maps from 'pages/Maps';
@@ -38,6 +39,7 @@ function PostAuth(){
             <div className={hideText ? "md:ml-20":"md:ml-64"}>
                 <Route exact path="/overview" component={Dashboard} />
                 <Route exact path="/purchaseOrders" component={Orders} />
+                <Route exact path="/invoices" component={Invoices} />
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/tables" component={Tables} />
                 <Route exact path="/maps" component={Maps} />
