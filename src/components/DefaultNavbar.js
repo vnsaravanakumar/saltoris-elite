@@ -16,6 +16,7 @@ import VeoliaLogo from 'assets/img/veolia-logo-transparent.png';
 import Image from '@material-tailwind/react/Image';
 import AuthService from "../services/auth.service";
 import logo from "../assets/img/logo.jpg";
+import DixonLogo from 'assets/img/dixon_logo.jpg';
 
 export default function DefaultNavbar() {
     const [openNavbar, setOpenNavbar] = useState(false);
@@ -42,7 +43,7 @@ export default function DefaultNavbar() {
                     <Link to="/">
                         <NavbarBrand>
                             <div className="ml-4 text-primary-blue">
-                                <img className="w-24" src={logo} />
+                                <img className="w-24" src={DixonLogo} />
                             </div>
                         </NavbarBrand>
                     </Link>
@@ -55,7 +56,7 @@ export default function DefaultNavbar() {
                 <NavbarCollapse open={openNavbar}>
                     <Nav>
                         <div className="flex flex-col z-50 lg:flex-row lg:items-center">
-                        <Link to="/supplier-register">
+                        {/* <Link to="/supplier-register">
                         <Button
                             color="transparent"
                             buttonType="link"
@@ -71,7 +72,7 @@ export default function DefaultNavbar() {
                             className="!py-1.5 text-white bg-primary-blue capitalize"
                         >
                             Login
-                        </Button></Link>)}
+                        </Button></Link>)} */}
                             {/* {currentUser && 
                             <Link to="/dashboard">
                                 <NavLink ripple="light">

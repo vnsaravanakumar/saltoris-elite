@@ -24,17 +24,18 @@ import React, { lazy, Suspense } from 'react';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 const defaultLayouts = {
   lg: [
-    {x: 0, y: 0, w: 4, h: 11, i: '1'},
-    {x: 4, y: 0, w: 4, h: 11, i: '2'},
-    {x: 8, y: 0, w: 2, h: 11, i: '3'},
+    {x: 0, y: 0, w: 3, h: 11, i: '1'},
+    {x: 3, y: 0, w: 3, h: 11, i: '2'},
+    {x: 6, y: 0, w: 4, h: 11, i: '3'},
     {x: 0, y: 10, w: 5, h: 11, i: '4'},
     {x: 5, y: 10, w: 5, h: 11, i: '5'}
   ],
   md: [
-    {x: 0, y: 0, w: 4, h: 11, i: '1'},
-    {x: 4, y: 0, w: 4, h: 11, i: '2'},
-    {x: 8, y: 0, w: 2, h: 11, i: '3'},
-    {x: 0, y: 10, w: 3, h: 11, i: '4'}
+    {x: 0, y: 0, w: 3, h: 11, i: '1'},
+    {x: 3, y: 0, w: 3, h: 11, i: '2'},
+    {x: 6, y: 0, w: 4, h: 11, i: '3'},
+    {x: 0, y: 10, w: 5, h: 11, i: '4'},
+    {x: 5, y: 10, w: 5, h: 11, i: '5'}
   ],
   sm: [
     {w: 12, h: 11, x: 0, y: 0, minH:11, minW:4 , i: '1'},

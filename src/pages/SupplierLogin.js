@@ -83,7 +83,7 @@ export default function SupplierLogin() {
                         <Card>
                             <div contentPosition="none" className=" p-5 mb-5 text-white rounded-lg">
                                 <div className="w-full justify-center">
-                                    <div className="uppercase font-bold pb-4 text-center text-gray-500 text-[10px]">sign in | sign up</div>
+                                    {/* <div className="uppercase font-bold pb-4 text-center text-gray-500 text-[10px]">sign in | sign up</div> */}
                                     <h2 className="text-lg text-center font-bold text-gray-800">Supplier Login</h2>
                                 </div>
                             </div>
@@ -109,13 +109,13 @@ export default function SupplierLogin() {
                                     rules={{ required: true, minLength: 8, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$/i}}
                                 />
                             </div>
-                            <div className="mb-4 px-4 text-[10px] text-gray-700 text-right">
+                            {/* <div className="mb-4 px-4 text-[10px] text-gray-700 text-right">
                                 Forgot Username or Forgot Password
-                            </div>
+                            </div> */}
                             <div className="flex justify-center bg-bb">
                                 <Button
                                     color="blue"
-                                    className="bg-primary"
+                                    className="bg-primary my-6"
                                     buttonType="submit"
                                     size="md"
                                     ripple="dark"
@@ -125,8 +125,8 @@ export default function SupplierLogin() {
                                     Login
                                 </Button>
                             </div>
-                            <p className="text-xs text-center mt-5 text-black font-semibold">Join the ELIT Network | 
-                            <span className="text-xs text-center mt-2 font-semibold text-primary-blue"><Link to="/supplier-register"> Register Here</Link></span></p>
+                            {/* <p className="text-xs text-center mt-5 text-black font-semibold">Join the ELIT Network | 
+                            <span className="text-xs text-center mt-2 font-semibold text-primary-blue"><Link to="/supplier-register"> Register Here</Link></span></p> */}
                         </Card>
                     </Container>
 

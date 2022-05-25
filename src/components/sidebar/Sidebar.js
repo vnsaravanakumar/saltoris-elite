@@ -5,6 +5,7 @@ import Icon from '@material-tailwind/react/Icon';
 import H6 from '@material-tailwind/react/Heading6';
 import { Link } from 'react-router-dom';
 import SaltorisLogo from 'assets/img/SaltorisLogo.svg';
+import DixonLogo from 'assets/img/dixon_logo.jpg';
 import { ReactComponent as BidsIcon } from './img/bids.svg';
 import { ReactComponent as DashboardIcon } from './img/dashboard.svg';
 import { ReactComponent as InvoicesIcon } from './img/invoices.svg';
@@ -87,7 +88,7 @@ export default function Sidebar({hideText, setHideText}) {
                                     <img className="w-20" src={SaltorisLogo} />
                                 </div>} */}
                                 {/* <div className="flex lowercase "> */}
-                                    <img src={SaltorisLogo} className="h-10"/>
+                                    <img src={DixonLogo} className="h-10"/>
                                 {/* </div> */}
                             </div>
                         </Link>
